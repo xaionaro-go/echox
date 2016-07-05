@@ -16,7 +16,7 @@ using `Echo.SetRenderer()`, allowing us to use any template engine.
 
 Example below shows how to use Go `html/template`:
 
-1. Implement `echo.Render` interface
+1. Implement `echo.Renderer` interface
 
     ```go
     type Template struct {
