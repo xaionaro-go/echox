@@ -33,7 +33,7 @@ e.Pre(middleware.AddTrailingSlash())
 
 ```go
 e := echo.New()
-e.Use(middleware.AddTrailingSlashWithConfig(TrailingSlashConfig{
+e.Use(middleware.AddTrailingSlashWithConfig(middleware.TrailingSlashConfig{
   RedirectCode: http.StatusMovedPermanently,
 }))
 ```
