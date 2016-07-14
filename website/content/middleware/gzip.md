@@ -39,6 +39,6 @@ DefaultGzipConfig = GzipConfig{
 ```go
 e := echo.New()
 e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
-  Level: 5
+  Level: 5,
 }))
 ```
