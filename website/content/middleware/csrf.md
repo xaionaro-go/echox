@@ -16,9 +16,11 @@ the website trusts.
 ### Configuration
 
 ```go
+// CSRFConfig defines the config for CSRF middleware.
 CSRFConfig struct {
-  // Key to create CSRF token.
-  Secret []byte `json:"secret"`
+  // TokenLength is the length of the generated token.
+  TokenLength uint8 `json:"token_length"`
+  // Optional. Default value 32.
 
   // TokenLookup is a string in the form of "<source>:<key>" that is used
   // to extract token from the request.
@@ -26,7 +28,7 @@ CSRFConfig struct {
   // Possible values:
   // - "header:<name>"
   // - "form:<name>"
-  // - "header:<name>"
+  // - "query:<name>"
   TokenLookup string `json:"token_lookup"`
 
   // Context key to store generated CSRF token into context.
@@ -45,13 +47,13 @@ CSRFConfig struct {
   // Optional. Default value none.
   CookiePath string `json:"cookie_path"`
 
-  // Expiration time of the CSRF cookie.
-  // Optional. Default value 24H.
-  CookieExpires time.Time `json:"cookie_expires"`
+  // Max age (in seconds) of the CSRF cookie.
+  // Optional. Default value 86400 (24hr).
+  CookieMaxAge int `json:"cookie_max_age"`
 
   // Indicates if CSRF cookie is secure.
-  CookieSecure bool `json:"cookie_secure"`
   // Optional. Default value false.
+  CookieSecure bool `json:"cookie_secure"`
 
   // Indicates if CSRF cookie is HTTP only.
   // Optional. Default value false.
@@ -63,16 +65,17 @@ CSRFConfig struct {
 
 ```go
 DefaultCSRFConfig = CSRFConfig{
-  TokenLookup:   "header:" + echo.HeaderXCSRFToken,
-  ContextKey:    "csrf",
-  CookieName:    "csrf",
-  CookieExpires: time.Now().Add(24 * time.Hour),
+  TokenLength:  32,
+  TokenLookup:  "header:" + echo.HeaderXCSRFToken,
+  ContextKey:   "csrf",
+  CookieName:   "_csrf",
+  CookieMaxAge: 86400,
 }
 ```
 
 *Usage*
 
-`e.Use(middleware.CSRF("secret"))`
+`e.Use(middleware.CSRF())`
 
 ### Custom Configuration
 
@@ -86,3 +89,13 @@ e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
 ```
 
 Example above uses `X-XSRF-TOKEN` request header to extract CSRF token.
+
+### Accessing CSRF Token
+
+#### Server-side
+
+`Echo#Context` using `ContextKey` and passed to the client via template.
+
+#### Client-side
+
+CSRF token is also available to the client via CSRF cookie.
