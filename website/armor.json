@@ -1,14 +1,13 @@
 {
     "http": {
-        "address": ":80"
+        "address": ":80",
+        "read_timeout": 60,
+        "write_timeout": 60
     },
-    "plugins": [{
-        "name": "logger"
-    }],
     "services": [{
         "plugins": [{
             "name": "static",
-            "root": "/www"
+            "root": "/srv/www"
         }]
     }]
 }

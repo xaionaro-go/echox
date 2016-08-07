@@ -94,8 +94,9 @@ Example above uses `X-XSRF-TOKEN` request header to extract CSRF token.
 
 #### Server-side
 
-`Echo#Context` using `ContextKey` and passed to the client via template.
+CSRF token can be accessed from `Echo#Context` using `ContextKey` and passed to
+the client via template.
 
 #### Client-side
 
-CSRF token is also available to the client via CSRF cookie.
+CSRF token can be accessed from CSRF cookie.
