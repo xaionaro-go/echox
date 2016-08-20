@@ -34,7 +34,7 @@ SetLogger defines a custom logger.
 #### Log Output
 
 `Echo#SetLogOutput(w io.Writer)` sets the output destination for the logger. Default
-value is `os.Stdout`
+value `os.Stdout`
 
 To completely disable logs use `Echo#SetLogOutput(io.Discard)`
 
@@ -42,7 +42,7 @@ To completely disable logs use `Echo#SetLogOutput(io.Discard)`
 
 `Echo#SetLogLevel(l log.Level)`
 
-SetLogLevel sets the log level for the logger. Default value `3` (ERROR).
+SetLogLevel sets the log level for the logger. Default value `5` (OFF).
 Possible values:
 
 - `0` (DEBUG)

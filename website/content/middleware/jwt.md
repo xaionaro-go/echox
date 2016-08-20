@@ -18,6 +18,9 @@ JWT provides a JSON Web Token (JWT) authentication middleware.
 
 ```go
 JWTConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Signing key to validate token.
   // Required.
   SigningKey []byte `json:"signing_key"`
@@ -30,12 +33,16 @@ JWTConfig struct {
   // Optional. Default value "user".
   ContextKey string `json:"context_key"`
 
+  // Claims are extendable claims data defining token content.
+  // Optional. Default value jwt.MapClaims
+  Claims jwt.Claims
+
   // TokenLookup is a string in the form of "<source>:<name>" that is used
   // to extract token from the request.
   // Optional. Default value "header:Authorization".
   // Possible values:
   // - "header:<name>"
-  // - "form:<name>"
+  // - "query:<name>"
   TokenLookup string `json:"token_lookup"`
 }
 ```

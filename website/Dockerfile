@@ -1,9 +1,8 @@
 FROM reg.lab.st/armor:0.1.0
 MAINTAINER Vishal Rana <vr@labstack.com>
 
-COPY armor.json /etc
-COPY public /srv/www
+WORKDIR /svc
 
-EXPOSE 80
+COPY armor.json public ./
 
-CMD ["-c", "/etc/armor.json"]
+CMD ["-c", "armor.json"]

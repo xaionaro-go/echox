@@ -7,7 +7,7 @@ title = "Installation"
 
 ## Installation
 
-Echo is developed and tested using Go `1.5.x` and `1.6.x`
+Echo is developed and tested using Go `1.6.x` and `1.7.x`
 
 ### Install the latest stable version of Echo via `go get`
 

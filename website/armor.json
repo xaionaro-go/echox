@@ -7,7 +7,7 @@
     "services": [{
         "plugins": [{
             "name": "static",
-            "root": "/srv/www"
+            "root": "."
         }]
     }]
 }
