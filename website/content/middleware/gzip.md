@@ -10,24 +10,6 @@ title = "Gzip"
 
 Gzip middleware compresses HTTP response using gzip compression scheme.
 
-### Configuration
-
-```go
-GzipConfig struct {
-  // Gzip compression level.
-  // Optional. Default value -1.
-  Level int
-}
-```
-
-### Default Configuration
-
-```go
-DefaultGzipConfig = GzipConfig{
-  Level: -1,
-}
-```
-
 *Usage*
 
 `e.Use(middleware.Gzip())`
@@ -41,4 +23,22 @@ e := echo.New()
 e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
   Level: 5,
 }))
+```
+
+### Configuration
+
+```go
+GzipConfig struct {
+  // Gzip compression level.
+  // Optional. Default value -1.
+  Level int
+}
+```
+
+*Default Configuration*
+
+```go
+DefaultGzipConfig = GzipConfig{
+  Level: -1,
+}
 ```

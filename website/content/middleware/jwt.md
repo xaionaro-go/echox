@@ -14,16 +14,33 @@ JWT provides a JSON Web Token (JWT) authentication middleware.
 - For invalid token, it sends "401 - Unauthorized" response.
 - For empty or invalid `Authorization` header, it sends "400 - Bad Request".
 
+*Usage*
+
+`e.Use(middleware.JWT([]byte("secret"))`
+
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
+  SigningKey: []byte("secret"),
+  TokenLookup: "query:token",
+}))
+```
+
 ### Configuration
 
 ```go
+// JWTConfig defines the config for JWT middleware.
 JWTConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper
 
   // Signing key to validate token.
   // Required.
-  SigningKey []byte `json:"signing_key"`
+  SigningKey interface{} `json:"signing_key"`
 
   // Signing method, used to check token signing method.
   // Optional. Default value HS256.
@@ -43,11 +60,12 @@ JWTConfig struct {
   // Possible values:
   // - "header:<name>"
   // - "query:<name>"
+  // - "cookie:<name>"
   TokenLookup string `json:"token_lookup"`
 }
 ```
 
-### Default Configuration
+*Default Configuration*
 
 ```go
 DefaultJWTConfig = JWTConfig{
@@ -55,22 +73,6 @@ DefaultJWTConfig = JWTConfig{
   ContextKey:    "user",
   TokenLookup:   "header:" + echo.HeaderAuthorization,
 }
-```
-
-*Usage*
-
-`e.Use(middleware.JWT([]byte("secret"))`
-
-### Custom Configuration
-
-*Usage*
-
-```go
-e := echo.New()
-e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
-  SigningKey: []byte("secret"),
-  TokenLookup: "query:token",
-}))
 ```
 
 ### [Recipe]({{< ref "recipes/jwt.md">}})

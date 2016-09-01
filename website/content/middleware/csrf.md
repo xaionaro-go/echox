@@ -13,6 +13,34 @@ abbreviated as CSRF (sometimes pronounced sea-surf) or XSRF, is a type of malici
 exploit of a website where unauthorized commands are transmitted from a user that
 the website trusts.
 
+*Usage*
+
+`e.Use(middleware.CSRF())`
+
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
+  TokenLookup: "header:X-XSRF-TOKEN",
+}))
+```
+
+Example above uses `X-XSRF-TOKEN` request header to extract CSRF token.
+
+### Accessing CSRF Token
+
+#### Server-side
+
+CSRF token can be accessed from `Echo#Context` using `ContextKey` and passed to
+the client via template.
+
+#### Client-side
+
+CSRF token can be accessed from CSRF cookie.
+
 ### Configuration
 
 ```go
@@ -61,7 +89,7 @@ CSRFConfig struct {
 }
 ```
 
-### Default Configuration
+*Default Configuration*
 
 ```go
 DefaultCSRFConfig = CSRFConfig{
@@ -72,31 +100,3 @@ DefaultCSRFConfig = CSRFConfig{
   CookieMaxAge: 86400,
 }
 ```
-
-*Usage*
-
-`e.Use(middleware.CSRF())`
-
-### Custom Configuration
-
-*Usage*
-
-```go
-e := echo.New()
-e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
-  TokenLookup: "header:X-XSRF-TOKEN",
-}))
-```
-
-Example above uses `X-XSRF-TOKEN` request header to extract CSRF token.
-
-### Accessing CSRF Token
-
-#### Server-side
-
-CSRF token can be accessed from `Echo#Context` using `ContextKey` and passed to
-the client via template.
-
-#### Client-side
-
-CSRF token can be accessed from CSRF cookie.

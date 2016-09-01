@@ -12,6 +12,22 @@ CORS middleware implements [CORS](http://www.w3.org/TR/cors) specification.
 CORS gives web servers cross-domain access controls, which enable secure cross-domain
 data transfers.
 
+*Usage*
+
+`e.Use(middleware.CORS())`
+
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+  AllowOrigins: []string{"https://labstack.com", "https://labstack.net"},
+  AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+}))
+```
+
 ### Configuration
 
 ```go
@@ -49,27 +65,11 @@ CORSConfig struct {
 }
 ```
 
-### Default Configuration
+*Default Configuration*
 
 ```go
 DefaultCORSConfig = CORSConfig{
 	AllowOrigins: []string{"*"},
 	AllowMethods: []string{echo.GET, echo.HEAD, echo.PUT, echo.PATCH, echo.POST, echo.DELETE},
 }
-```
-
-*Usage*
-
-`e.Use(middleware.CORS())`
-
-### Custom Configuration
-
-*Usage*
-
-```go
-e := echo.New()
-e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-  AllowOrigins: []string{"https://labstack.com", "https://labstack.net"},
-  AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-}))
 ```

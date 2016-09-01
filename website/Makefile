@@ -1,6 +1,5 @@
 build:
-	rm -rf public
-	hugo --config hugo.json
+	rm -rf public && hugo --config hugo.json
 	docker build -t reg.lab.st/echo .
 
 push: build

@@ -236,8 +236,12 @@ Middleware | Description
 [CORS]({{< ref "middleware/cors.md">}}) | Cross-Origin Resource Sharing
 [CSRF]({{< ref "middleware/csrf.md">}}) | Cross-Site Request Forgery
 [Static]({{< ref "middleware/static.md">}}) | Serve static files
-[AddTrailingSlash]({{< ref "middleware/add-trailing-slash.md">}}) | Add trailing slash to the request URI
-[RemoveTrailingSlash]({{< ref "middleware/remove-trailing-slash.md">}}) | Remove trailing slash from the request URI
+[HTTPSRedirect]({{< ref "middleware/redirect.md#httpsredirect-middleware">}}) | Redirect HTTP requests to HTTPS
+[HTTPSWWWRedirect]({{< ref "middleware/redirect.md#httpswwwredirect-middleware">}}) | Redirect HTTP requests to WWW HTTPS
+[WWWRedirect]({{< ref "middleware/redirect.md#wwwredirect-middleware">}}) | Redirect non WWW requests to WWW
+[NonWWWRedirect]({{< ref "middleware/redirect.md#nonwwwredirect-middleware">}}) | Redirect WWW request to non WWW
+[AddTrailingSlash]({{< ref "middleware/trailing-slash.md#addtrailingslash-middleware">}}) | Add trailing slash to the request URI
+[RemoveTrailingSlash]({{< ref "middleware/trailing-slash.md#removetrailingslash-middleware">}}) | Remove trailing slash from the request URI
 [MethodOverride]({{< ref "middleware/method-override.md">}}) | Override request method
 
 #### Third-party Middleware

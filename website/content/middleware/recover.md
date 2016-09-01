@@ -12,6 +12,24 @@ Recover middleware recovers from panics anywhere in the chain, prints stack trac
 and handles the control to the centralized
 [HTTPErrorHandler]({{< ref "guide/customization.md#http-error-handler">}}).
 
+*Usage*
+
+`e.Use(middleware.Recover())`
+
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
+  StackSize:  1 << 10, // 1 KB
+}))
+```
+
+Example above uses a `StackSize` of 1 KB and default values for `DisableStackAll`
+and `DisablePrintStack`.
+
 ### Configuration
 
 ```go
@@ -31,7 +49,7 @@ RecoverConfig struct {
 }
 ```
 
-### Default Configuration
+*Default Configuration*
 
 ```go
 DefaultRecoverConfig = RecoverConfig{
@@ -40,21 +58,3 @@ DefaultRecoverConfig = RecoverConfig{
 	PrintStack: true,
 }
 ```
-
-*Usage*
-
-`e.Use(middleware.Recover())`
-
-### Custom Configuration
-
-*Usage*
-
-```go
-e := echo.New()
-e.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
-  StackSize:  1 << 10, // 1 KB
-}))
-```
-
-Example above uses a `StackSize` of 1 KB and default values for `DisableStackAll`
-and `DisablePrintStack`.

@@ -12,6 +12,28 @@ Secure middleware provides protection against cross-site scripting (XSS) attack,
 content type sniffing, clickjacking, insecure connection and other code injection
 attacks.
 
+*Usage*
+
+`e.Use(middleware.Secure())`
+
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.SecureWithConfig(middleware.SecureConfig{
+	XSSProtection:         "",
+	ContentTypeNosniff:    "",
+	XFrameOptions:         "",
+	HSTSMaxAge:            3600,
+	ContentSecurityPolicy: "default-src 'self'",
+}))
+```
+
+Passing empty `XSSProtection`, `ContentTypeNosniff`, `XFrameOptions` or `ContentSecurityPolicy`
+disables that protection.
+
 ### Configuration
 
 ```go
@@ -60,7 +82,7 @@ SecureConfig struct {
 }
 ```
 
-### Default Configuration
+*Default Configuration*
 
 ```go
 DefaultSecureConfig = SecureConfig{
@@ -69,25 +91,3 @@ DefaultSecureConfig = SecureConfig{
   XFrameOptions:      "SAMEORIGIN",
 }
 ```
-
-*Usage*
-
-`e.Use(middleware.Secure())`
-
-### Custom Configuration
-
-*Usage*
-
-```go
-e := echo.New()
-e.Use(middleware.SecureWithConfig(middleware.SecureConfig{
-	XSSProtection:         "",
-	ContentTypeNosniff:    "",
-	XFrameOptions:         "",
-	HSTSMaxAge:            3600,
-	ContentSecurityPolicy: "default-src 'self'",
-}))
-```
-
-Passing empty `XSSProtection`, `ContentTypeNosniff`, `XFrameOptions` or `ContentSecurityPolicy`
-disables that protection.
