@@ -25,3 +25,11 @@
   // Prism
   Prism.languages.sh = Prism.languages.bash;
 })();
+
+function openSidenav() {
+  document.getElementById("sidenav").style.display = 'block';
+}
+
+function closeSidenav() {
+  document.getElementById("sidenav").style.display = 'none';
+}

@@ -1,0 +1,119 @@
+textarea:focus, input:focus{
+    outline: none;
+}
+
+blockquote {
+  margin: 0;
+}
+
+/* Theme */
+.w3-theme-l5 {color:#000 !important; background-color:#edfcff !important}
+.w3-theme-l4 {color:#000 !important; background-color:#c3f5ff !important}
+.w3-theme-l3 {color:#000 !important; background-color:#87ebff !important}
+.w3-theme-l2 {color:#000 !important; background-color:#4ae1ff !important}
+.w3-theme-l1 {color:#fff !important; background-color:#0ed7ff !important}
+.w3-theme-d1 {color:#fff !important; background-color:#009dbc !important}
+.w3-theme-d2 {color:#fff !important; background-color:#008ba7 !important}
+.w3-theme-d3 {color:#fff !important; background-color:#007a92 !important}
+.w3-theme-d4 {color:#fff !important; background-color:#00697d !important}
+.w3-theme-d5 {color:#fff !important; background-color:#005769 !important}
+
+.w3-theme-light {color:#000 !important; background-color:#edfcff !important}
+.w3-theme-dark {color:#fff !important; background-color:#005769 !important}
+.w3-theme-action {color:#fff !important; background-color:#005769 !important}
+
+.w3-theme {color:#fff !important; background-color:#00afd1 !important}
+.w3-text-theme {color:#00afd1 !important}
+.w3-border-theme {border-color:#00afd1 !important}
+
+.w3-hover-theme:hover {color:#fff !important; background-color:#00afd1 !important}
+.w3-hover-text-theme {color:#00afd1 !important}
+.w3-hover-border-theme:hover {border-color:#00afd1 !important}
+
+.w3-navbar {
+  z-index: 2;
+  padding: 8px 16px;
+}
+
+.w3-navbar li a {
+  padding: 0;
+}
+
+.w3-navbar li a:hover, .w3-closenav a:hover {
+    background-color: inherit;
+}
+
+.w3-sidenav {
+  width: 250px;
+  padding: 72px 32px 32px;
+}
+
+.w3-main {
+  margin-left: 250px;
+  padding: 0 16px;
+}
+
+/* Header */
+.header {
+  border-bottom: 1px solid #F1F1F1;
+}
+.logo {
+  height: 30px;
+}
+
+/* Footer */
+.footer {
+  color: grey;
+  font-weight: 300;
+  border-top: 1px solid #F1F1F1;
+}
+
+/* Icon */
+.icon {
+  padding: 4px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* Gitter */
+.gitter-open-chat-button {
+    background-color: #00AFD1;
+    transition: all .2s ease;
+}
+.gitter-open-chat-button:hover {
+    background-color: #009DBC;
+}
+
+/* Algolia */
+/* http://vuejs.org/css/page.css */
+.aa-dropdown-menu {
+  margin-top: 40px;
+  border-color: #999;
+}
+.algolia-docsearch-footer {
+  border-color: #DDD;
+}
+.algolia-docsearch-suggestion--subcategory-column {
+  border-color: #DDD;
+}
+.algolia-docsearch-suggestion--category-header {
+    background-color: #00AFD1;
+}
+.algolia-docsearch-suggestion--highlight {
+    color: #008BA7;
+}
+.algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--highlight {
+    background-color: #009DBC;
+}
+.aa-cursor .algolia-docsearch-suggestion--content {
+    color: #D44C70;
+}
+.aa-cursor .algolia-docsearch-suggestion {
+    background: #F5F5F5;
+}
+
+#search-menu {
+  position: absolute !important;
+  top: 10%;
+  left: 25%;
+}

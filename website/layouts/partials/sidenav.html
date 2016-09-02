@@ -1,0 +1,21 @@
+<nav id="sidenav" class="w3-sidenav w3-collapse w3-animate-left">
+  <span onclick="closeSidenav()" class="w3-closenav w3-xxlarge w3-hide-large">
+    &times;
+  </span>
+  {{ $currentNode := . }}
+  {{ range .Site.Menus.side }}
+    <h4>{{ .Pre }} {{ .Name }}</h4>
+      {{ range .Children }}
+        <a{{ if $currentNode.IsMenuCurrent "side" . }} class="w3-theme"{{ end }} href="{{ .URL }}">
+          {{ .Name }}
+        </a>
+        {{ if .HasChildren }}
+          {{ range .Children }}
+            <a {{ if $currentNode.IsMenuCurrent "side" . }} class="w3-theme"{{ end }} href="{{ .URL }}">
+              {{ .Name }}
+            </a>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+  {{ end }}
+</nav>
