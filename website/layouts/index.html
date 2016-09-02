@@ -1,25 +1,17 @@
 {{ partial "head.html" . }}
-
 <body>
-	{{ partial "header.html" . }}
-  {{ partial "search-menu.html" . }}
-	<section style="margin-top: 40px;">
-		<div class="container">
-			<div class="columns">
-				<div class="column is-3">
-					{{ partial "menu.html" . }}
-				</div>
-				<div class="column is-9">
-					<div class="content">
-						{{ range where .Data.Pages "Title" "Index" }}
-							{{ .Content }}
-						{{ end }}
-					</div>
-				</div>
+	{{ partial "navbar.html" . }}
+	{{ partial "sidenav.html" . }}
+	{{ partial "search.html" . }}
+	<div class="w3-main">
+	  <div class="w3-row-padding w3-padding-128">
+			<div class="w3-col" style="width: 100%;">
+				{{ range where .Data.Pages "Title" "Index" }}
+					{{ .Content }}
+				{{ end }}
 			</div>
-		</div>
-	</section>
-	{{ partial "footer.html" . }}
+	  </div>
+		{{ partial "footer.html" . }}
+	</div>
 </body>
-
 </html>

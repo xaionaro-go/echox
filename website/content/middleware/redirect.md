@@ -45,7 +45,7 @@ e.Pre(middleware.WWWRedirect())
 
 ## NonWWWRedirect Middleware
 
-NonWWWRedirect redirects WWW request to non WWW.
+NonWWWRedirect redirects WWW requests to non WWW.
 For example, http://www.labstack.com will be redirect to http://labstack.com.
 
 *Usage*

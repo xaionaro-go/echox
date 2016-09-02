@@ -239,7 +239,7 @@ Middleware | Description
 [HTTPSRedirect]({{< ref "middleware/redirect.md#httpsredirect-middleware">}}) | Redirect HTTP requests to HTTPS
 [HTTPSWWWRedirect]({{< ref "middleware/redirect.md#httpswwwredirect-middleware">}}) | Redirect HTTP requests to WWW HTTPS
 [WWWRedirect]({{< ref "middleware/redirect.md#wwwredirect-middleware">}}) | Redirect non WWW requests to WWW
-[NonWWWRedirect]({{< ref "middleware/redirect.md#nonwwwredirect-middleware">}}) | Redirect WWW request to non WWW
+[NonWWWRedirect]({{< ref "middleware/redirect.md#nonwwwredirect-middleware">}}) | Redirect WWW requests to non WWW
 [AddTrailingSlash]({{< ref "middleware/trailing-slash.md#addtrailingslash-middleware">}}) | Add trailing slash to the request URI
 [RemoveTrailingSlash]({{< ref "middleware/trailing-slash.md#removetrailingslash-middleware">}}) | Remove trailing slash from the request URI
 [MethodOverride]({{< ref "middleware/method-override.md">}}) | Override request method
