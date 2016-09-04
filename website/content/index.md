@@ -2,7 +2,7 @@
 title: Index
 ---
 
-# Fast and unfancy HTTP server framework for Go (Golang). Up to 10x faster than the rest.
+# Fast and unfancy HTTP server framework for Go (Golang).
 
 ## Feature Overview
 
@@ -19,6 +19,7 @@ title: Index
 - Define your format for the logger.
 - Highly customizable.
 
+
 ## Performance
 
 - Environment:
@@ -28,7 +29,7 @@ title: Index
 - Test Suite: https://github.com/vishr/web-framework-benchmark
 - Date: 4/4/2016
 
-<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/1phsG_NPmEOaTVTw6lasK3CeEwBlbkhzAWPiyrBznm1g/pubchart?oid=107271028&amp;format=interactive"></iframe>
+<img style="width: 100%;" src="http://i.imgur.com/fZVnK52.png" alt="Performance">
 
 ## Quick Start
 

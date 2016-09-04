@@ -5,7 +5,7 @@
 	{{ partial "search.html" . }}
 	<div class="w3-main">
 	  <div class="w3-row-padding w3-padding-128">
-			<div class="w3-col" style="width: 100%;">
+			<div class="w3-col m9 l9">
         <article class="content">
           <section>
             {{ .Content }}
@@ -27,6 +27,9 @@
             </script>
           </footer>
         </article>
+			</div>
+			<div class="w3-col m3 l3">
+				{{ partial "promo.html" }}
 			</div>
 	  </div>
 		{{ partial "footer.html" . }}
