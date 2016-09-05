@@ -19,7 +19,9 @@
   var codes = document.getElementsByTagName('code');
   for (var i = 0; i < codes.length; i++) {
     var c = codes[i];
-    c.classList.add('w3-codespan');
+    if (c.parentElement.nodeName !== 'PRE') {
+      c.classList.add('w3-codespan');
+    }
   }
 
   // Prism

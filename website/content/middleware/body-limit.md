@@ -22,3 +22,33 @@ G, T or P.
 e := echo.New()
 e.Use(middleware.BodyLimit("2M"))
 ```
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.BodyLimitWithConfig(middleware.BodyLimitConfig{},
+}))
+```
+
+### Configuration
+
+```go
+BodyLimitConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
+  // Maximum allowed size for a request body, it can be specified
+  // as `4x` or `4xB`, where x is one of the multiple from K, M, G, T or P.
+  Limit string `json:"limit"`
+}
+```
+
+*Default Configuration*
+
+```go
+DefaultBodyLimitConfig = BodyLimitConfig{
+  Skipper: defaultSkipper,
+}
+```

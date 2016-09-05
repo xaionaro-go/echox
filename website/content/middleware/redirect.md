@@ -66,7 +66,7 @@ e.Use(middleware.HTTPSRedirectWithConfig(middleware.RedirectConfig{
 }))
 ```
 
-This will redirect the request HTTP to HTTPS with status code `307 - StatusTemporaryRedirect`.
+Example above will redirect the request HTTP to HTTPS with status code `307 - StatusTemporaryRedirect`.
 
 ### Configuration
 

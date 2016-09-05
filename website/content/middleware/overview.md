@@ -25,11 +25,15 @@ route.
 
 The following built-in middleware should be registered at this level:
 
+- HTTPSRedirect
+- HTTPSWWWRedirect
+- WWWRedirect
+- NonWWWRedirect
 - AddTrailingSlash
 - RemoveTrailingSlash
 - MethodOverride
 
-*Note*: As router has not processed the request, middleware at this level won't
+> As router has not processed the request, middleware at this level won't
 have access to any path related API from `echo.Context`.
 
 #### Root Level (After router)
@@ -75,5 +79,26 @@ When defining a new route, you can optionally register middleware just for it.
 e := echo.New()
 e.GET("/", <Handler>, <Middleware...>)
 ```
+
+### Skipping Middleware
+
+There are cases when you would like to skip a middleware based on some condition,
+for that each middleware has an option to define a function `Skipper func(c echo.Context) bool`.
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+	Skipper: func(c echo.Context) bool {
+		if strings.HasPrefix(c.Request().Host(), "localhost") {
+			return true
+		}
+		return false
+	},
+}))
+```
+
+Example above skips Logger middleware when request host starts with localhost.
 
 ### [Writing Custom Middleware]({{< ref "recipes/middleware.md">}})

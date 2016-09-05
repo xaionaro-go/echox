@@ -32,6 +32,9 @@ e.Pre(middleware.MethodOverrideWithConfig(middleware.MethodOverrideConfig{
 
 ```go
 MethodOverrideConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Getter is a function that gets overridden method from the request.
   // Optional. Default values MethodFromHeader(echo.HeaderXHTTPMethodOverride).
   Getter MethodOverrideGetter
@@ -42,6 +45,7 @@ MethodOverrideConfig struct {
 
 ```go
 DefaultMethodOverrideConfig = MethodOverrideConfig{
-  Getter: MethodFromHeader(echo.HeaderXHTTPMethodOverride),
+  Skipper: defaultSkipper,
+  Getter:  MethodFromHeader(echo.HeaderXHTTPMethodOverride),
 }
 ```

@@ -24,7 +24,7 @@ e := echo.New()
 e.Static("/static", "assets")
 ```
 
-This will serve any file from the assets directory for path `/static/*`. For example,
+Example above will serve any file from the assets directory for path `/static/*`. For example,
 a request to `/static/js/main.js` will fetch and serve `assets/js/main.js` file.
 
 *Usage 2*
@@ -34,7 +34,7 @@ e := echo.New()
 e.Static("/", "assets")
 ```
 
-This will serve any file from the assets directory for path `/*`. For example,
+Example above will serve any file from the assets directory for path `/*`. For example,
 a request to `/js/main.js` will fetch and serve `assets/js/main.js` file.
 
 ### Using `Echo#File()`

@@ -69,9 +69,11 @@ JWTConfig struct {
 
 ```go
 DefaultJWTConfig = JWTConfig{
+  Skipper:       defaultSkipper,
   SigningMethod: AlgorithmHS256,
   ContextKey:    "user",
   TokenLookup:   "header:" + echo.HeaderAuthorization,
+  Claims:        jwt.MapClaims{},
 }
 ```
 

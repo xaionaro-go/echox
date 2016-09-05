@@ -25,3 +25,34 @@ e.Use(middleware.BasicAuth(func(username, password string) bool {
 	return false
 }))
 ```
+
+### Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{},
+}))
+```
+
+### Configuration
+
+```go
+BasicAuthConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
+  // Validator is a function to validate BasicAuth credentials.
+  // Required.
+  Validator BasicAuthValidator
+}
+```
+
+*Default Configuration*
+
+```go
+DefaultBasicAuthConfig = BasicAuthConfig{
+	Skipper: defaultSkipper,
+}
+```

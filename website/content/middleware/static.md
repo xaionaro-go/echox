@@ -38,6 +38,9 @@ This serves static files from `static` directory and enables directory browsing.
 
 ```go
 StaticConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Root directory from where the static content is served.
   // Required.
   Root string `json:"root"`
@@ -61,6 +64,7 @@ StaticConfig struct {
 
 ```go
 DefaultStaticConfig = StaticConfig{
-  Index: "index.html",
+  Skipper: defaultSkipper,
+  Index:   "index.html",
 }
 ```

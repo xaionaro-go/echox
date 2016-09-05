@@ -34,18 +34,21 @@ and `DisablePrintStack`.
 
 ```go
 RecoverConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Size of the stack to be printed.
   // Optional. Default value 4KB.
-  StackSize int
+  StackSize int `json:"stack_size"`
 
   // DisableStackAll disables formatting stack traces of all other goroutines
   // into buffer after the trace for the current goroutine.
   // Optional. Default value false.
-  DisableStackAll bool
+  DisableStackAll bool `json:"disable_stack_all"`
 
   // DisablePrintStack disables printing stack trace.
   // Optional. Default value as false.
-  DisablePrintStack bool
+  DisablePrintStack bool `json:"disable_print_stack"`
 }
 ```
 
@@ -53,8 +56,9 @@ RecoverConfig struct {
 
 ```go
 DefaultRecoverConfig = RecoverConfig{
-	StackSize:  4 << 10, // 4 KB
-	StackAll:   true,
-	PrintStack: true,
+  Skipper:           defaultSkipper,
+  StackSize:         4 << 10, // 4 KB
+  DisableStackAll:   false,
+  DisablePrintStack: false,
 }
 ```

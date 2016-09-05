@@ -29,9 +29,12 @@ e.Use(middleware.GzipWithConfig(middleware.GzipConfig{
 
 ```go
 GzipConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Gzip compression level.
   // Optional. Default value -1.
-  Level int
+  Level int `json:"level"`
 }
 ```
 
@@ -39,6 +42,7 @@ GzipConfig struct {
 
 ```go
 DefaultGzipConfig = GzipConfig{
-  Level: -1,
+  Skipper: defaultSkipper,
+  Level:   -1,
 }
 ```

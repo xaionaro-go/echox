@@ -46,6 +46,9 @@ CSRF token can be accessed from CSRF cookie.
 ```go
 // CSRFConfig defines the config for CSRF middleware.
 CSRFConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // TokenLength is the length of the generated token.
   TokenLength uint8 `json:"token_length"`
   // Optional. Default value 32.
@@ -93,6 +96,7 @@ CSRFConfig struct {
 
 ```go
 DefaultCSRFConfig = CSRFConfig{
+  Skipper:      defaultSkipper,
   TokenLength:  32,
   TokenLookup:  "header:" + echo.HeaderXCSRFToken,
   ContextKey:   "csrf",

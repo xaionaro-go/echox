@@ -43,6 +43,9 @@ method=GET, uri=/hello, status=200
 
 ```go
 LoggerConfig struct {
+  // Skipper defines a function to skip middleware.
+  Skipper Skipper
+
   // Log format which can be constructed using the following tags:
   //
   // - time_rfc3339
@@ -57,13 +60,13 @@ LoggerConfig struct {
   // - status
   // - latency (In microseconds)
   // - latency_human (Human readable)
-  // - rx_bytes (Bytes received)
-  // - tx_bytes (Bytes sent)
+  // - bytes_in (Bytes received)
+  // - bytes_out (Bytes sent)
   //
   // Example "${remote_ip} ${status}"
   //
   // Optional. Default value DefaultLoggerConfig.Format.
-  Format string
+  Format string `json:"format"`
 
   // Output is a writer where logs are written.
   // Optional. Default value os.Stdout.
@@ -75,11 +78,11 @@ LoggerConfig struct {
 
 ```go
 DefaultLoggerConfig = LoggerConfig{
+  Skipper: defaultSkipper,
   Format: `{"time":"${time_rfc3339}","remote_ip":"${remote_ip}",` +
     `"method":"${method}","uri":"${uri}","status":${status}, "latency":${latency},` +
-    `"latency_human":"${latency_human}","rx_bytes":${rx_bytes},` +
-    `"tx_bytes":${tx_bytes}}` + "\n",
-  color:  color.New(),
+    `"latency_human":"${latency_human}","bytes_in":${bytes_in},` +
+    `"bytes_out":${bytes_out}}` + "\n",
   Output: os.Stdout,
 }
 ```
