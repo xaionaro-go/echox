@@ -42,7 +42,7 @@ func main() {
 	e.GET("/stream", stream)
 	e.Run(standard.WithConfig(engine.Config{
 		Address:     ":1323",
-		TLSCertfile: "cert.pem",
-		TLSKeyfile:  "key.pem",
+		TLSCertFile: "cert.pem",
+		TLSKeyFile:  "key.pem",
 	}))
 }

@@ -3,6 +3,7 @@ package echo
 import (
 	"encoding/json"
 	"encoding/xml"
+	"fmt"
 	"io"
 	"mime"
 	"mime/multipart"
@@ -24,6 +25,12 @@ type (
 	// response objects, path, path parameters, data and registered handler.
 	Context interface {
 		context.Context
+
+		// Context returns `context.Context`.
+		Context() context.Context
+
+		// SetContext sets `context.Context`.
+		SetContext(context.Context)
 
 		// Request returns `engine.Request` interface.
 		Request() engine.Request
@@ -133,6 +140,10 @@ type (
 		// Attachment sends a response from `io.ReaderSeeker` as attachment, prompting
 		// client to save the file.
 		Attachment(io.ReadSeeker, string) error
+
+		// Inline sends a response from `io.ReaderSeeker` as inline, opening
+		// the file in the browser.
+		Inline(io.ReadSeeker, string) error
 
 		// NoContent sends a response with no body and a status code.
 		NoContent(int) error
@@ -411,8 +422,16 @@ func (c *echoContext) File(file string) error {
 }
 
 func (c *echoContext) Attachment(r io.ReadSeeker, name string) (err error) {
+	return c.contentDisposition(r, name, "attachment")
+}
+
+func (c *echoContext) Inline(r io.ReadSeeker, name string) (err error) {
+	return c.contentDisposition(r, name, "inline")
+}
+
+func (c *echoContext) contentDisposition(r io.ReadSeeker, name, dispositionType string) (err error) {
 	c.response.Header().Set(HeaderContentType, ContentTypeByExtension(name))
-	c.response.Header().Set(HeaderContentDisposition, "attachment; filename="+name)
+	c.response.Header().Set(HeaderContentDisposition, fmt.Sprintf("%s; filename=%s", dispositionType, name))
 	c.response.WriteHeader(http.StatusOK)
 	_, err = io.Copy(c.response, r)
 	return

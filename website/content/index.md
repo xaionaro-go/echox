@@ -6,18 +6,18 @@ title: Index
 
 ## Feature Overview
 
-- Optimized HTTP router which smartly prioritize routes.
-- Build robust and scalable RESTful APIs.
-- Run with standard HTTP server or FastHTTP server.
-- Group APIs.
-- Extensible middleware framework.
-- Define middleware at root, group or route level.
-- Data binding for JSON, XML and form payload.
-- Handy functions to send variety of HTTP responses.
-- Centralized HTTP error handling.
-- Template rendering with any template engine.
-- Define your format for the logger.
-- Highly customizable.
+- Optimized HTTP router which smartly prioritize routes
+- Build robust and scalable RESTful APIs
+- Run with standard HTTP server or FastHTTP server
+- Group APIs
+- Extensible middleware framework
+- Define middleware at root, group or route level
+- Data binding for JSON, XML and form payload
+- Handy functions to send variety of HTTP responses
+- Centralized HTTP error handling
+- Template rendering with any template engine
+- Define your format for the logger
+- Highly customizable
 
 
 ## Performance
@@ -29,7 +29,7 @@ title: Index
 - Test Suite: https://github.com/vishr/web-framework-benchmark
 - Date: 4/4/2016
 
-<img style="width: 100%;" src="http://i.imgur.com/fZVnK52.png" alt="Performance">
+<img style="width: 100%;" src="https://i.imgur.com/fZVnK52.png" alt="Performance">
 
 ## Quick Start
 
@@ -264,10 +264,10 @@ Middleware | Description
 - [Hop on to chat](https://gitter.im/labstack/echo)
 - [Open an issue](https://github.com/labstack/echo/issues/new)
 
-## Support Us
+## Support Echo
 
 - ☆ the project
-- [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JD5R56K84A8G4&lc=US&item_name=LabStack&item_number=echo&currency_code=USD&bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted)
+- [Donate](https://echo.labstack.com/support-echo)
 - 🌐 spread the word
 - [Contribute](#contribute:d680e8a854a7cbad6d490c445cba2eba) to the project
 

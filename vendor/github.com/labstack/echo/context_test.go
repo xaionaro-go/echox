@@ -145,6 +145,19 @@ func TestContext(t *testing.T) {
 		}
 	}
 
+	// Inline
+	rec = test.NewResponseRecorder()
+	c = e.NewContext(req, rec).(*echoContext)
+	file, err = os.Open("_fixture/images/walle.png")
+	if assert.NoError(t, err) {
+		err = c.Inline(file, "walle.png")
+		if assert.NoError(t, err) {
+			assert.Equal(t, http.StatusOK, rec.Status())
+			assert.Equal(t, "inline; filename=walle.png", rec.Header().Get(HeaderContentDisposition))
+			assert.Equal(t, 219885, rec.Body.Len())
+		}
+	}
+
 	// NoContent
 	rec = test.NewResponseRecorder()
 	c = e.NewContext(req, rec).(*echoContext)
@@ -328,7 +341,8 @@ func TestContextRedirect(t *testing.T) {
 }
 
 func TestContextEmbedded(t *testing.T) {
-	c := new(echoContext)
+	var c Context
+	c = new(echoContext)
 	c.SetContext(context.WithValue(c, "key", "val"))
 	assert.Equal(t, "val", c.Value("key"))
 	now := time.Now()
@@ -341,7 +355,8 @@ func TestContextEmbedded(t *testing.T) {
 }
 
 func TestContextStore(t *testing.T) {
-	c := new(echoContext)
+	var c Context
+	c = new(echoContext)
 	c.Set("name", "Jon Snow")
 	assert.Equal(t, "Jon Snow", c.Get("name"))
 }

@@ -4,18 +4,18 @@
 
 ## Feature Overview
 
-- Optimized HTTP router which smartly prioritize routes.
-- Build robust and scalable RESTful APIs.
-- Run with standard HTTP server or FastHTTP server.
-- Group APIs.
-- Extensible middleware framework.
-- Define middleware at root, group or route level.
-- Data binding for JSON, XML and form payload.
-- Handy functions to send variety of HTTP responses.
-- Centralized HTTP error handling.
-- Template rendering with any template engine.
-- Define your format for the logger.
-- Highly customizable.
+- Optimized HTTP router which smartly prioritize routes
+- Build robust and scalable RESTful APIs
+- Run with standard HTTP server or FastHTTP server
+- Group APIs
+- Extensible middleware framework
+- Define middleware at root, group or route level
+- Data binding for JSON, XML and form payload
+- Handy functions to send variety of HTTP responses
+- Centralized HTTP error handling
+- Template rendering with any template engine
+- Define your format for the logger
+- Highly customizable
 
 ## Performance
 
@@ -26,7 +26,7 @@
 - Test Suite: https://github.com/vishr/web-framework-benchmark
 - Date: 4/4/2016
 
-![Performance](http://i.imgur.com/fZVnK52.png)
+![Performance](https://i.imgur.com/fZVnK52.png)
 
 ## Quick Start
 
@@ -235,6 +235,10 @@ Middleware | Description
 [CORS](https://echo.labstack.com/middleware/cors) | Cross-Origin Resource Sharing
 [CSRF](https://echo.labstack.com/middleware/csrf) | Cross-Site Request Forgery
 [Static](https://echo.labstack.com/middleware/static) | Serve static files
+[HTTPSRedirect](https://echo.labstack.com/middleware/redirect#httpsredirect-middleware) | Redirect HTTP requests to HTTPS
+[HTTPSWWWRedirect](https://echo.labstack.com/middleware/redirect#httpswwwredirect-middleware) | Redirect HTTP requests to WWW HTTPS
+[WWWRedirect](https://echo.labstack.com/middleware/redirect#wwwredirect-middleware) | Redirect non WWW requests to WWW
+[NonWWWRedirect](https://echo.labstack.com/middleware/redirect#nonwwwredirect-middleware) | Redirect WWW requests to non WWW
 [AddTrailingSlash](https://echo.labstack.com/middleware/add-trailing-slash) | Add trailing slash to the request URI
 [RemoveTrailingSlash](https://echo.labstack.com/middleware/remove-trailing-slash) | Remove trailing slash from the request URI
 [MethodOverride](https://echo.labstack.com/middleware/method-override) | Override request method
@@ -261,7 +265,7 @@ Middleware | Description
 ## Support Us
 
 - :star: the project
-- [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JD5R56K84A8G4&lc=US&item_name=LabStack&item_number=echo&currency_code=USD&bn=PP-DonationsBF:btn_donate_LG.gif:NonHosted)
+- [Donate](https://echo.labstack.com/support-echo)
 - :earth_americas: spread the word
 - [Contribute](#contribute) to the project
 
