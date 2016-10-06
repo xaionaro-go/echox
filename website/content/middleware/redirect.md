@@ -1,5 +1,6 @@
 +++
-title = "Redirect"
+title = "Redirect Middleware"
+description = "Redirect middleware for Echo"
 [menu.side]
   name = "Redirect"
   parent = "middleware"
@@ -8,8 +9,8 @@ title = "Redirect"
 
 ## HTTPSRedirect Middleware
 
-HTTPSRedirect middleware redirects HTTP requests to HTTPS.
-For example, http://labstack.com will be redirect to https://labstack.com.
+HTTPSRedirect middleware redirects http requests to https.
+For example, http://labstack.com will be redirected to https://labstack.com.
 
 *Usage*
 
@@ -20,8 +21,8 @@ e.Pre(middleware.HTTPSRedirect())
 
 ## HTTPSWWWRedirect Middleware
 
-HTTPSWWWRedirect redirects HTTP requests to WWW HTTPS.
-For example, http://labstack.com will be redirect to https://www.labstack.com.
+HTTPSWWWRedirect redirects http requests to www https.
+For example, http://labstack.com will be redirected to https://www.labstack.com.
 
 *Usage*
 
@@ -30,11 +31,23 @@ e := echo.New()
 e.Pre(middleware.HTTPSWWWRedirect())
 ```
 
+## HTTPSNonWWWRedirect Middleware
+
+HTTPSNonWWWRedirect redirects http requests to https non www.
+For example, http://www.labstack.com will be redirect to https://labstack.com.
+
+*Usage*
+
+```go
+e := echo.New()
+e.Pre(HTTPSNonWWWRedirect())
+```
+
 ## WWWRedirect Middleware
 
-WWWRedirect redirects non WWW requests to WWW.
+WWWRedirect redirects non www requests to www.
 
-For example, http://labstack.com will be redirect to http://www.labstack.com.
+For example, http://labstack.com will be redirected to http://www.labstack.com.
 
 *Usage*
 
@@ -45,8 +58,8 @@ e.Pre(middleware.WWWRedirect())
 
 ## NonWWWRedirect Middleware
 
-NonWWWRedirect redirects WWW requests to non WWW.
-For example, http://www.labstack.com will be redirect to http://labstack.com.
+NonWWWRedirect redirects www requests to non www.
+For example, http://www.labstack.com will be redirected to http://labstack.com.
 
 *Usage*
 

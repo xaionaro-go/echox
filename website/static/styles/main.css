@@ -1,5 +1,10 @@
 a {
-  text-decoration: none;
+    color: #c05b4d;
+    text-decoration: none
+}
+a:hover, a:focus {
+    color: #a5473a;
+    text-decoration: underline
 }
 
 textarea:focus, input:focus{
@@ -7,7 +12,7 @@ textarea:focus, input:focus{
 }
 
 blockquote {
-  margin: 0;
+    margin-left: 0;
 }
 
 /* Theme */
@@ -46,6 +51,10 @@ blockquote {
   padding: 72px 32px 32px;
 }
 
+.w3-sidenav a {
+  color: #000;
+}
+
 .w3-main {
   margin-left: 250px;
   padding: 0 16px;
@@ -70,19 +79,19 @@ blockquote {
 
 /* Footer */
 .footer {
-  color: grey;
-  font-weight: 300;
-  border-top: 1px solid #F1F1F1;
+    color: grey;
+    font-weight: 300;
+    border-top: 1px solid #F1F1F1;
 }
-
-/* Icon */
+a.icon {
+    text-decoration: none;
+}
 .icon {
-  padding: 4px;
-  font-size: 20px;
+    padding: 4px;
+    font-size: 20px;
 }
-
-.icon > i {
-  color: grey;
+.icon>i {
+    color: grey;
 }
 
 /* Gitter */
@@ -122,8 +131,9 @@ blockquote {
     background: #F5F5F5;
 }
 
-.active {
-  background: #00AFD1 !important;
+.w3-sidenav a:hover,
+.w3-sidenav .active {
+  background: #00AFD1;
   color: #FFF;
 }
 
@@ -139,8 +149,11 @@ blockquote {
   bottom: 8px;
   right: 32px;
   margin: 0;
-  color: #7F8C8D;
   font-size: 12px;
+}
+
+.ad a {
+  color: #7F8C8D;
 }
 
 #carbonads {
@@ -230,4 +243,14 @@ blockquote {
 a.support {
   display: inline-block;
   padding: 6px 16px;
+}
+
+/* Notice*/
+.notice a {
+    color: inherit;
+    text-decoration: underline;
+}
+.notice a:hover, .notice a:focus {
+    color: inherit;
+    text-decoration: underline;
 }

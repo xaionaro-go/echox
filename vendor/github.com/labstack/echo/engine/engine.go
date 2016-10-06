@@ -21,6 +21,9 @@ type (
 
 		// Start starts the HTTP server.
 		Start() error
+
+		// Stop stops the HTTP server by closing underlying TCP connection.
+		Stop() error
 	}
 
 	// Request defines the interface for HTTP request.
@@ -34,6 +37,9 @@ type (
 		// Host returns HTTP request host. Per RFC 2616, this is either the value of
 		// the `Host` header or the host name given in the URL itself.
 		Host() string
+
+		// SetHost sets the host of the request.
+		SetHost(string)
 
 		// URI returns the unmodified `Request-URI` sent by the client.
 		URI() string
@@ -205,6 +211,7 @@ type (
 		Listener     net.Listener  // Custom `net.Listener`. If set, server accepts connections on it.
 		TLSCertFile  string        // TLS certificate file path.
 		TLSKeyFile   string        // TLS key file path.
+		DisableHTTP2 bool          // Disables HTTP/2.
 		ReadTimeout  time.Duration // Maximum duration before timing out read of the request.
 		WriteTimeout time.Duration // Maximum duration before timing out write of the response.
 	}

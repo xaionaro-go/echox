@@ -1,13 +1,13 @@
----
-title: HTTP2
-menu:
-  side:
-    identifier: http2
-    parent: recipes
-    weight: 3
----
++++
+title = "HTTP/2 Recipe"
+description = "HTTP/2 recipe / example for Echo"
+[menu.side]
+  name = "HTTP/2"
+  parent = "recipes"
+  weight = 3
++++
 
-## What is HTTP2?
+## What is HTTP/2?
 
 HTTP/2 (originally named HTTP/2.0) is the second major version of the HTTP network
 protocol used by the World Wide Web
@@ -21,7 +21,7 @@ protocol used by the World Wide Web
 
 ## How to run an HTTP/2 and HTTPS server?
 
-> Only supported in `standard` engine.
+> Standard engine only
 
 ### Generate a self-signed X.509 TLS certificate (HTTP/2 requires TLS to operate)
 

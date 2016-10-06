@@ -4,8 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
-	"github.com/rs/cors"
+	"github.com/labstack/echo/middleware"
 )
 
 type (
@@ -30,7 +29,7 @@ func init() {
 	// hook into the echo instance to create an endpoint group
 	// and add specific middleware to it plus handlers
 	g := e.Group("/users")
-	g.Use(standard.WrapMiddleware(cors.Default().Handler))
+	g.Use(middleware.CORS())
 
 	g.POST("", createUser)
 	g.GET("", getUsers)

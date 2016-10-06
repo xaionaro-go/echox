@@ -132,6 +132,17 @@ func TestContext(t *testing.T) {
 		assert.Equal(t, "Hello, <strong>World!</strong>", rec.Body.String())
 	}
 
+	// Stream
+	rec = test.NewResponseRecorder()
+	c = e.NewContext(req, rec).(*echoContext)
+	r := strings.NewReader("response from a stream")
+	err = c.Stream(http.StatusOK, "application/octet-stream", r)
+	if assert.NoError(t, err) {
+		assert.Equal(t, http.StatusOK, rec.Status())
+		assert.Equal(t, "application/octet-stream", rec.Header().Get(HeaderContentType))
+		assert.Equal(t, "response from a stream", rec.Body.String())
+	}
+
 	// Attachment
 	rec = test.NewResponseRecorder()
 	c = e.NewContext(req, rec).(*echoContext)
@@ -343,11 +354,11 @@ func TestContextRedirect(t *testing.T) {
 func TestContextEmbedded(t *testing.T) {
 	var c Context
 	c = new(echoContext)
-	c.SetContext(context.WithValue(c, "key", "val"))
+	c.SetStdContext(context.WithValue(c, "key", "val"))
 	assert.Equal(t, "val", c.Value("key"))
 	now := time.Now()
 	ctx, _ := context.WithDeadline(context.Background(), now)
-	c.SetContext(ctx)
+	c.SetStdContext(ctx)
 	n, _ := ctx.Deadline()
 	assert.Equal(t, now, n)
 	assert.Equal(t, context.DeadlineExceeded, c.Err())

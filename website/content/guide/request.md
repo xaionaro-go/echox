@@ -1,50 +1,63 @@
----
-title: Request
-menu:
-  side:
-    parent: guide
-    weight: 6
----
++++
+title = "HTTP Request"
+description = "Handling HTTP request in Echo"
+[menu.side]
+  name = "Request"
+  parent = "guide"
+  weight = 6
++++
 
-## HTTP Request
+## Request
 
-### Handler path
+### Bind Request Body
 
-`Context#Path()` returns the registered path for the handler, it can be used in the
-middleware for logging purpose.
+To bind request body into a provided Go type use `Context#Bind(interface{})`.
+The default binder supports decoding application/json, application/xml and
+application/x-www-form-urlencoded payload based on Context-Type header.
+
+*Example*
+
+TODO
+
+> Custom binder can be registered via `Echo#SetBinder(Binder)`
+
+### Query Parameter
+
+Query parameter can be retrieved by name using `Context#QueryParam(name string)`.
 
 *Example*
 
 ```go
-e.Use(func(c echo.Context) error {
-    println(c.Path()) // Prints `/users/:name`
-    return nil
-})
-e.GET("/users/:name", func(c echo.Context) error) {
-    return c.String(http.StatusOK, name)
+e.GET("/users", func(c echo.Context) error {
+	name := c.QueryParam("name")
+	return c.String(http.StatusOK, name)
 })
 ```
 
-### golang.org/x/net/context
+```sh
+$ curl -G -d "name=joe" http://localhost:1323/users
+```
 
-`echo.Context` embeds `context.Context` interface, so all it's functions
-are available right from `echo.Context`.
+### Form Parameter
+
+Form parameter can be retrieved by name using `Context#FormValue(name string)`.
 
 *Example*
 
 ```go
-e.GET("/users/:name", func(c echo.Context) error) {
-    c.SetNetContext(context.WithValue(nil, "key", "val"))
-    // Pass it down...
-    // Use it...
-    val := c.Value("key").(string)
-    return c.String(http.StatusOK, name)
+e.POST("/users", func(c echo.Context) error {
+	name := c.FormValue("name")
+	return c.String(http.StatusOK, name)
 })
 ```
 
-### Path parameter
+```sh
+$ curl -d "name=joe" http://localhost:1323/users
+```
 
-Path parameter can be retrieved either by name `Context#Param(name string) string`
+### Path Parameter
+
+Registered path parameter can be retrieved either by name `Context#Param(name string) string`
 or by index `Context#P(i int) string`. Getting parameter by index gives a slightly
 better performance.
 
@@ -66,36 +79,20 @@ e.GET("/users/:name", func(c echo.Context) error {
 $ curl http://localhost:1323/users/joe
 ```
 
-### Query parameter
 
-Query parameter can be retrieved by name using `Context#QueryParam(name string)`.
+### Handler Path
 
-*Example*
-
-```go
-e.GET("/users", func(c echo.Context) error {
-	name := c.QueryParam("name")
-	return c.String(http.StatusOK, name)
-})
-```
-
-```sh
-$ curl -G -d "name=joe" http://localhost:1323/users
-```
-
-### Form parameter
-
-Form parameter can be retrieved by name using `Context#FormValue(name string)`.
+`Context#Path()` returns the registered path for the handler, it can be used in the
+middleware for logging purpose.
 
 *Example*
 
 ```go
-e.POST("/users", func(c echo.Context) error {
-	name := c.FormValue("name")
-	return c.String(http.StatusOK, name)
+e.Use(func(c echo.Context) error {
+    println(c.Path()) // Prints `/users/:name`
+    return nil
 })
-```
-
-```sh
-$ curl -d "name=joe" http://localhost:1323/users
+e.GET("/users/:name", func(c echo.Context) error) {
+    return c.String(http.StatusOK, name)
+})
 ```
