@@ -1,4 +1,6 @@
-# EchoX
+# EchoX 
+
+# The content of this repo have been moved to the main [Echo](https://github.com/labstack/echo) project
 
 Echo Extra
 
