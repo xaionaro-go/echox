@@ -1,12 +1,8 @@
-# EchoX 
-
-# The content of this repo have been moved to the main [Echo](https://github.com/labstack/echo) project
-
-Echo Extra
+# Echo Extra
 
 ### Running Recipes
 
-- Go into any recipe folder and run `go run server.go`
+- Go into any cookbook folder and run `go run server.go`
 
 ### Running Website Locally
 
