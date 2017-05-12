@@ -51,6 +51,10 @@ s := &http.Server{
 e.Logger.Fatal(e.StartServer(s))
 ```
 
+## Startup Banner
+
+`Echo#HideBanner` can be used to hide the startup banner.
+
 ## Custom Listener
 
 `Echo#*Listener` can be used to run a custom listener.
