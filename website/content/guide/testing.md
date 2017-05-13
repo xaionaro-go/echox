@@ -130,7 +130,7 @@ func TestGetUser(t *testing.T) {
 f := make(url.Values)
 f.Set("name", "Jon Snow")
 f.Set("email", "jon@labstack.com")
-req, err := http.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
+req := httptest.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
 ```
 
 ### Setting Path Params
@@ -145,7 +145,8 @@ c.SetParamValues("1", "jon@labstack.com")
 ```go
 q := make(url.Values)
 q.Set("email", "jon@labstack.com")
-req, err := http.NewRequest(echo.POST, "/?"+q.Encode(), nil)
+req := http.NewRequest(echo.POST, "/?"+q.Encode(), nil)
+req.Header.Set(echo.HandlerContentType, echo.MIMEApplicationForm)
 ```
 
 ## Testing Middleware
