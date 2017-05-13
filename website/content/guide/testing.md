@@ -131,6 +131,7 @@ f := make(url.Values)
 f.Set("name", "Jon Snow")
 f.Set("email", "jon@labstack.com")
 req := httptest.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
+req.Header.Set(echo.HandlerContentType, echo.MIMEApplicationForm)
 ```
 
 ### Setting Path Params
@@ -146,7 +147,6 @@ c.SetParamValues("1", "jon@labstack.com")
 q := make(url.Values)
 q.Set("email", "jon@labstack.com")
 req := http.NewRequest(echo.POST, "/?"+q.Encode(), nil)
-req.Header.Set(echo.HandlerContentType, echo.MIMEApplicationForm)
 ```
 
 ## Testing Middleware
