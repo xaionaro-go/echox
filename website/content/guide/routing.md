@@ -6,8 +6,8 @@ description = "Routing HTTP request in Echo"
   parent = "guide"
 +++
 
-Echo's router is based on [radix tree](http://en.wikipedia.org/wiki/Radix_tree) makings
-route lookup really fast, it leverages [sync pool](https://golang.org/pkg/sync/#Pool)
+Echo's router is based on [radix tree](http://en.wikipedia.org/wiki/Radix_tree), making
+route lookup really fast. It leverages [sync pool](https://golang.org/pkg/sync/#Pool)
 to reuse memory and achieve zero dynamic memory allocation with no GC overhead.
 
 Routes can be registered by specifying HTTP method, path and a matching handler.
@@ -40,13 +40,13 @@ match:
 - `/users/1/files/1`
 - `/users/anything...`
 
-## Path matching order
+## Path Matching Order
 
 - Static
 - Param
 - Match any
 
-### Example
+*Example*
 
 ```go
 e.GET("/users/:id", func(c echo.Context) error {
@@ -92,13 +92,14 @@ g.Use(middleware.BasicAuth(func(username, password string) bool {
 }))
 ```
 
-## URI building
+## URI Building
 
-`Echo.URI` can be used to generate URI for any handler with specified path parameters.
-It's helpful to centralize all your URI patterns which ease in refactoring your
-application.
+`Echo#URI(handler HandlerFunc, params ...interface{})` can be used to generate URI
+for any handler with specified path parameters. It's helpful to centralize all your
+URI patterns which ease in refactoring your application.
 
-`e.URI(h, 1)` will generate `/users/1` for the route registered below
+
+For example, `e.URI(h, 1)` will generate `/users/1` for the route registered below:
 
 ```go
 // Handler
@@ -108,4 +109,69 @@ h := func(c echo.Context) error {
 
 // Route
 e.GET("/users/:id", h)
+```
+
+## List Routes
+
+`Echo#Routes() []*Route` can be used to list all registered routes in the order
+they are defined. Each route contains HTTP method, path and an associated handler.
+
+*Example*
+
+```go
+// Handlers
+func createUser(c echo.Context) error {
+}
+
+func findUser(c echo.Context) error {
+}
+
+func updateUser(c echo.Context) error {
+}
+
+func deleteUser(c echo.Context) error {
+}
+
+// Routes
+e.POST("/users", createUser)
+e.GET("/users", findUser)
+e.PUT("/users", updateUser)
+e.DELETE("/users", deleteUser)
+```
+
+Use the following code to output all routes to a JSON file:
+
+```go
+data, err := json.MarshalIndent(e.Routes(), "", "  ")
+if err != nil {
+	return err
+}
+ioutil.WriteFile("routes.json", data, 0644)
+```
+
+`routes.json`
+
+```json
+[
+  {
+    "method": "POST",
+    "path": "/users",
+    "handler": "main.createUser"
+  },
+  {
+    "method": "GET",
+    "path": "/users",
+    "handler": "main.findUser"
+  },
+  {
+    "method": "PUT",
+    "path": "/users",
+    "handler": "main.updateUser"
+  },
+  {
+    "method": "DELETE",
+    "path": "/users",
+    "handler": "main.deleteUser"
+  }
+]
 ```
