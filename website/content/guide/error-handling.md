@@ -50,8 +50,30 @@ If logging is on, the error message is also logged.
 
 ## Custom HTTP Error Handler
 
-For most cases default error handler should be sufficient; however, a custom HTTP
+For most cases default error HTTP handler should be sufficient; however, a custom HTTP
 error handler can come handy if you want to capture different type of errors and
 take action accordingly e.g. send notification email or log error to a centralized
-system. You can also send customized responses to the clients e.g. error page or
+system. You can also send customized response to the client e.g. error page or
 just a JSON response.
+
+### Error Pages
+
+The following custom HTTP error handler shows how to display error pages for different
+type of errors and logs the error. The name of the error page should be like `<CODE>.html` e.g. `500.html`. You can look into this project
+https://github.com/AndiDittrich/HttpErrorPages for pre-built error pages.
+
+```go
+func customHTTPErrorHandler(err error, c echo.Context) {
+	code := http.StatusInternalServerError
+	if he, ok := err.(*echo.HTTPError); ok {
+		code = he.Code
+	}
+	errorPage := fmt.Sprintf("%d.html", code)
+	if err := c.File(errorPage); err != nil {
+		c.Logger().Error(err)
+	}
+	c.Logger().Error(err)
+}
+```
+
+> Instead of writing logs to the logger, you can also write them to an external service like Elasticsearch or Splunk.

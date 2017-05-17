@@ -1,4 +1,7 @@
-website:
+serve:
+	cd website && hugo serve
+
+build:
 	cd website && rm -rf public && hugo
 
-.PHONY: website
+.PHONY: serve build

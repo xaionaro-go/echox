@@ -139,7 +139,7 @@ e.PUT("/users", updateUser)
 e.DELETE("/users", deleteUser)
 ```
 
-Use the following code to output all routes to a JSON file:
+Using the following code you can output all the routes to a JSON file:
 
 ```go
 data, err := json.MarshalIndent(e.Routes(), "", "  ")
