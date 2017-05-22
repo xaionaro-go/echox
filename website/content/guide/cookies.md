@@ -26,7 +26,7 @@ Attribute | Optional
 `Domain` | Yes
 `Expires` | Yes
 `Secure` | Yes
-`HTTPOnly` | Yes
+`HttpOnly` | Yes
 
 Echo uses go standard `http.Cookie` object to add/retrieve cookies from the context received in the handler function.
 
