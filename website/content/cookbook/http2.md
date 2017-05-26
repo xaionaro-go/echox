@@ -6,7 +6,7 @@ description = "HTTP/2 server example for Echo"
   parent = "cookbook"
 +++
 
-## Running an HTTP/2 Server
+## How to run an HTTP/2 server?
 
 ### Step 1: Generate a self-signed X.509 TLS certificate 
 
@@ -19,10 +19,9 @@ go run $GOROOT/src/crypto/tls/generate_cert.go --host localhost
 > For demo purpose, we are using a self-signed certificate. Ideally, you should obtain
 a certificate from [CA](https://en.wikipedia.org/wiki/Certificate_authority).
 
-### Step 2: Initialize Echo and register handlers
+### Step 2: Create a handler which simply outputs the request information to the client
 
 ```go
-e := echo.New()
 e.GET("/request", func(c echo.Context) error {
   req := c.Request()
   format := `
