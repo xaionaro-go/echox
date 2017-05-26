@@ -92,25 +92,27 @@ var (
 func TestCreateUser(t *testing.T) {
 	// Setup
 	e := echo.New()
-	req := httptest.NewRequest(echo.POST, "/", strings.NewReader(userJSON))
-	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
-	rec := httptest.NewRecorder()
-	c := e.NewContext(req, rec)
-	h := &handler{mockDB}
+	req, err := http.NewRequest(echo.POST, "/users", strings.NewReader(userJSON))
+	if assert.NoError(t, err) {
+		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+		rec := httptest.NewRecorder()
+		c := e.NewContext(req, rec)
+		h := &handler{mockDB}
 
-	// Assertions
-	if assert.NoError(t, h.createUser(c)) {
-		assert.Equal(t, http.StatusCreated, rec.Code)
-		assert.Equal(t, userJSON, rec.Body.String())
+		// Assertions
+		if assert.NoError(t, h.createUser(c)) {
+			assert.Equal(t, http.StatusCreated, rec.Code)
+			assert.Equal(t, userJSON, rec.Body.String())
+		}
 	}
 }
 
 func TestGetUser(t *testing.T) {
 	// Setup
 	e := echo.New()
-	req := httptest.NewRequest(echo.GET, "/", nil)
+	req := new(http.Request)
 	rec := httptest.NewRecorder()
-	c := e.NewContext(req, rec)
+  c := e.NewContext(req, rec)
 	c.SetPath("/users/:email")
 	c.SetParamNames("email")
 	c.SetParamValues("jon@labstack.com")

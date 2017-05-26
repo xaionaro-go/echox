@@ -87,7 +87,7 @@ func(c echo.Context) error {
 ### JSON Pretty
 
 `Context#JSONPretty(code int, i interface{}, indent string)` can be used to a send
-a JSON response which is pretty printed based on indent, which could be spaces or tabs.
+a JSON response which is pretty printed based on indent, which could spaces or tabs.
 
 Example below sends a pretty print JSON indented with spaces:
 
@@ -106,15 +106,6 @@ func(c echo.Context) error {
   "email": "joe@labstack.com",
   "name": "Jon"
 }
-```
-
-> You can also use `Context#JSON()` to output a pretty printed JSON (indented with spaces)
-by appending `pretty` in the request URL query string.
-
-*Example*
-
-```sh
-curl http://localhost:1323/users/1?pretty
 ```
 
 ### JSON Blob
@@ -178,7 +169,7 @@ func(c echo.Context) error {
 ### XML Pretty
 
 `Context#XMLPretty(code int, i interface{}, indent string)` can be used to a send
-an XML response which is pretty printed based on indent, which could be spaces or tabs.
+an XML response which is pretty printed based on indent, which could spaces or tabs.
 
 Example below sends a pretty print XML indented with spaces:
 
@@ -198,15 +189,6 @@ func(c echo.Context) error {
   <Name>Jon</Name>
   <Email>joe@labstack.com</Email>
 </User>
-```
-
-> You can also use `Context#XML()` to output a pretty printed XML (indented with spaces) by appending
-`pretty` in the request URL query string.
-
-*Example*
-
-```sh
-curl http://localhost:1323/users/1?pretty
 ```
 
 ### XML Blob
@@ -276,6 +258,9 @@ func(c echo.Context) (err error) {
 	return c.Blob(http.StatusOK, "text/csv", data)
 }
 ```
+
+// Stream sends a streaming response with status code and content type.
+		Stream(code int, contentType string, r io.Reader) error
 
 ## Send Stream
 

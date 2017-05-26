@@ -1,47 +1,64 @@
 +++
 title = "HTTP/2"
-description = "HTTP/2 example for Echo"
+description = "HTTP/2 server example for Echo"
 [menu.main]
   name = "HTTP/2"
   parent = "cookbook"
 +++
 
-HTTP/2 (originally named HTTP/2.0) is the second major version of the HTTP network
-protocol used by the World Wide Web. HTTP/2 improves speed and provides better user
-experience.
+## Running an HTTP/2 Server
 
-### Key Features
+### Step 1: Generate a self-signed X.509 TLS certificate 
 
-- Binary, instead of textual.
-- Fully multiplexed, instead of ordered and blocking, can therefore use just one TCP connection.
-- Uses header compression to reduce overhead.
-- Allows servers to "push" responses proactively into client caches.
-
-## How to run an HTTP/2 and HTTPS server?
-
-### Generate a self-signed X.509 TLS certificate (HTTP/2 requires TLS to operate)
+Run the following command to generate `cert.pem` and `key.pem` files:
 
 ```sh
 go run $GOROOT/src/crypto/tls/generate_cert.go --host localhost
 ```
 
-This will generate `cert.pem` and `key.pem` files.
-
-> For demo purpose, we are using a self-signed certificate. Ideally you should obtain
+> For demo purpose, we are using a self-signed certificate. Ideally, you should obtain
 a certificate from [CA](https://en.wikipedia.org/wiki/Certificate_authority).
 
-## Server
+### Step 2: Initialize Echo and register handlers
+
+```go
+e := echo.New()
+e.GET("/request", func(c echo.Context) error {
+  req := c.Request()
+  format := `
+    <code>
+      Protocol: %s<br>
+      Host: %s<br>
+      Remote Address: %s<br>
+      Method: %s<br>
+      Path: %s<br>
+    </code>
+  `
+  return c.HTML(http.StatusOK, fmt.Sprintf(format, req.Proto, req.Host, req.RemoteAddr, req.Method, req.URL.Path))
+})
+```
+
+### Step 3: Configure TLS server using `cert.pem` and `key.pem`
+
+```go
+e.StartTLS(":1323", "cert.pem", "key.pem")
+```
+
+### Step 4: Run the server and browse to https://localhost:1323/request to see the following output
+
+```
+Protocol: HTTP/2.0
+Host: localhost:1323
+Remote Address: [::1]:60288
+Method: GET
+Path: /
+```
+
+## [Source Code]({{< source "http2" >}})
 
 `server.go`
 
 {{< embed "http2/server.go" >}}
-
-### Endpoints
-
-- https://localhost:1323/request (Displays the information about received HTTP request)
-- https://localhost:1323/stream (Streams the current time every second)
-
-## [Source Code]({{< source "http2" >}})
 
 ## Maintainers
 

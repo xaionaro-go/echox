@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/cookbook/twitter/model"
+	"github.com/labstack/echox/cookbook/twitter/model"
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )

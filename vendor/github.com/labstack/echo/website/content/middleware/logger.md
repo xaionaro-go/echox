@@ -66,7 +66,6 @@ LoggerConfig struct {
   // - header:<NAME>
   // - query:<NAME>
   // - form:<NAME>
-  // - cookie:<NAME>
   //
   // Example "${remote_ip} ${status}"
   //

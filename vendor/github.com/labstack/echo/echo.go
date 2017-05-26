@@ -584,11 +584,8 @@ func (e *Echo) startTLS(address string) error {
 func (e *Echo) StartServer(s *http.Server) (err error) {
 	// Setup
 	e.colorer.SetOutput(e.Logger.Output())
-	s.ErrorLog = e.stdLogger
 	s.Handler = e
-	if e.Debug {
-		e.Logger.SetLevel(log.DEBUG)
-	}
+	s.ErrorLog = e.stdLogger
 
 	if s.TLSConfig == nil {
 		if e.Listener == nil {
