@@ -14,11 +14,11 @@ Basic auth middleware provides an HTTP basic authentication.
 *Usage*
 
 ```go
-e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (error, bool) {
+e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
 	if username == "joe" && password == "secret" {
-		return nil, true
+		return true, nil
 	}
-	return nil, false
+	return false, nil
 }))
 ```
 
@@ -27,7 +27,7 @@ e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (erro
 *Usage*
 
 ```go
-e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{}}))
+e.Use(middleware.BasicAuthWithConfig(middleware.BasicAuthConfig{}))
 ```
 
 ## Configuration

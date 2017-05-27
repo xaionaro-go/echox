@@ -27,7 +27,6 @@ e.Use(middleware.RequestIDWithConfig(middleware.RequestIDConfig{
 ## Configuration
 
 ```go
-// RequestIDConfig defines the config for RequestID middleware.
 RequestIDConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper

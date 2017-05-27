@@ -29,7 +29,6 @@ e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 ## Configuration
 
 ```go
-// CORSConfig defines the config for CORS middleware.
 CORSConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper

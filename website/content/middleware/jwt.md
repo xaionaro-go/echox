@@ -30,7 +30,6 @@ e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
 ## Configuration
 
 ```go
-// JWTConfig defines the config for JWT middleware.
 JWTConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper

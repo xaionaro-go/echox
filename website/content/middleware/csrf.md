@@ -42,7 +42,6 @@ CSRF token can be accessed from CSRF cookie.
 ## Configuration
 
 ```go
-// CSRFConfig defines the config for CSRF middleware.
 CSRFConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper

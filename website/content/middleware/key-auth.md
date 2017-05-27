@@ -15,8 +15,8 @@ Key auth middleware provides a key based authentication.
 *Usage*
 
 ```go
-e.Use(middleware.KeyAuth(func(key string) (error, bool) {
-  return nil, key == "valid-key"
+e.Use(middleware.KeyAuth(func(key string) (bool, error) {
+  return key == "valid-key", nil
 }))
 ```
 
@@ -34,7 +34,6 @@ e.Use(middleware.KeyAuthWithConfig(middleware.KeyAuthConfig{
 ## Configuration
 
 ```go
-// KeyAuthConfig defines the config for KeyAuth middleware.
 KeyAuthConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper
