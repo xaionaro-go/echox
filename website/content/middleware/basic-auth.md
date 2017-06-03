@@ -4,6 +4,7 @@ description = "Basic auth middleware for Echo"
 [menu.main]
   name = "Basic Auth"
   parent = "middleware"
+  weight = 2
 +++
 
 Basic auth middleware provides an HTTP basic authentication.

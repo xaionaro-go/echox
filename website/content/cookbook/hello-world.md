@@ -4,6 +4,7 @@ description = "Hello world example for Echo"
 [menu.main]
   name = "Hello World"
   parent = "cookbook"
+  weight = 1
 +++
 
 ## Server

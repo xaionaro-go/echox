@@ -1,12 +1,15 @@
 +++
 title = "Casbin Auth Middleware"
-description = "An authorization library that supports access control models like ACL, RBAC, ABAC "
+description = "Casbin Auth middleware for Echo. It supports access control models like ACL, RBAC, ABAC"
 [menu.main]
-  name = "CasbinAuth"
+  name = "Casbin Auth"
   parent = "middleware"
+  weight = 2
 +++
 
-[Casbin](https://github.com/casbin/casbin) is a powerful and efficient open-source access control library for Golang projects. It provides support for enforcing authorization based on various models. By far, the access control models supported by Casbin are:
+> Echo community middleware
+
+[Casbin](https://github.com/casbin/casbin) is a powerful and efficient open-source access control library for Go. It provides support for enforcing authorization based on various models. By far, the access control models supported by Casbin are:
 
 - ACL (Access Control List)
 - ACL with superuser
@@ -19,14 +22,18 @@ description = "An authorization library that supports access control models like
 - RESTful
 - Deny-override: both allow and deny authorizations are supported, deny overrides the allow.
 
+```go
+import "github.com/labstack/echo-contrib/casbin" casbin-mw
+```
+
 *Usage*
 
 ```go
 e := echo.New()
-e.Use(middleware.CasbinAuth(casbin.NewEnforcer("casbin_auth_model.conf", "casbin_auth_policy.csv")))
+e.Use(casbin-mw.Auth(casbin.NewEnforcer("casbin_auth_model.conf", "casbin_auth_policy.csv")))
 ```
 
-- Syntax for models See: [Model.md](https://github.com/casbin/casbin/blob/master/Model.md)
+- For syntax, see: [Model.md](https://github.com/casbin/casbin/blob/master/Model.md)
 
 
 ## Custom Configuration
@@ -39,9 +46,9 @@ ce := casbin.NewEnforcer("casbin_auth_model.conf", "")
 ce.AddRoleForUser("alice", "admin")
 ce.AddPolicy(...)
 
-e.Use(middleware.CasbinAuth(ce))
+e.Use(casbin-mw.Auth(ce))
 // or
-e.Use(middleware.CasbinAuthWithConfig(casbin.CasbinAuthConfig(
+e.Use(casbin-mw.AuthWithConfig(casbin-mw.AuthConfig(
     Enforcer: ce,
 )))
 ```
@@ -50,24 +57,22 @@ e.Use(middleware.CasbinAuthWithConfig(casbin.CasbinAuthConfig(
 
 ```go
 type (
-  // CasbinAuthConfig defines the config for CasbinAuth middleware.
-  CasbinAuthConfig struct {
-    // Skipper defines a function to skip middleware.
-    Skipper  Skipper
-    // Enforcer CasbinAuth main rule.
-    // Required.
-    Enforcer *casbin.Enforcer
-  }
+  // AuthConfig defines the config for CasbinAuth middleware.
+	AuthConfig struct {
+		// Skipper defines a function to skip middleware.
+		Skipper middleware.Skipper
+		// Enforcer CasbinAuth main rule.
+		// Required.
+		Enforcer *casbin.Enforcer
+	}
 )
 ```
 
 *Default Configuration*
 
 ```go
-// DefaultCasbinAuthConfig is the default CasbinAuth middleware config.
-DefaultCasbinAuthConfig = CasbinAuthConfig{
-    Skipper: DefaultSkipper,
+// DefaultAuthConfig is the default CasbinAuth middleware config.
+DefaultAuthConfig = AuthConfig{
+  Skipper: middleware.DefaultSkipper,
 }
 ```
-
-## [Example]({{< ref "cookbook/casbin-auth.md">}})

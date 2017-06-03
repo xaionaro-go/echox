@@ -4,6 +4,7 @@ description = "CSRF middleware for Echo"
 [menu.main]
   name = "CSRF"
   parent = "middleware"
+  weight = 3
 +++
 
 Cross-site request forgery, also known as one-click attack or session riding and

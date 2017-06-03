@@ -1,14 +1,23 @@
 +++
-title = "HTTP/2 Server Push"
-description = "HTTP/2 server push example for Echo"
+title = "Reverse Proxy"
+description = "Using Echo as reverse proxy server"
+draft = true
 [menu.main]
-  name = "HTTP/2 Server Push"
+  name = "Reverse Proxy"
   parent = "cookbook"
 +++
 
-> Requires go1.8+
+## How to use Echo as a reverse proxy server?
 
-## How to send web assets using HTTP/2 server push?
+### Step 1: Create a `struct` to store upstream servers
+
+### Step 1: Create a HTTP proxy function using `httputil.NewSingleHostReverseProxy`
+
+```go
+func httpProxy(u *url.URL) http.Handler {
+	return httputil.NewSingleHostReverseProxy(u)
+}
+```
 
 ### Step 1: [Generate a self-signed X.509 TLS certificate](/cookbook/http2#step-1-generate-a-self-signed-x-509-tls-certificate)
 

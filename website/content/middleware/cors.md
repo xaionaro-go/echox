@@ -4,6 +4,7 @@ description = "CORS middleware for Echo"
 [menu.main]
   name = "CORS"
   parent = "middleware"
+  weight = 3
 +++
 
 CORS middleware implements [CORS](http://www.w3.org/TR/cors) specification.

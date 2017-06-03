@@ -4,6 +4,7 @@ description = "Secure middleware for Echo"
 [menu.main]
   name = "Secure"
   parent = "middleware"
+  weight = 4
 +++
 
 Secure middleware provides protection against cross-site scripting (XSS) attack,

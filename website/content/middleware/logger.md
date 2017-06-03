@@ -4,6 +4,7 @@ description = "Logger middleware for Echo"
 [menu.main]
   name = "Logger"
   parent = "middleware"
+  weight = 1
 +++
 
 Logger middleware logs the information about each HTTP request.

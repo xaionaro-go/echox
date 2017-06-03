@@ -4,6 +4,7 @@ description = "JWT middleware for Echo"
 [menu.main]
   name = "JWT"
   parent = "middleware"
+  weight = 3
 +++
 
 JWT provides a JSON Web Token (JWT) authentication middleware.
