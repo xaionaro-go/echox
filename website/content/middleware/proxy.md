@@ -13,13 +13,23 @@ to upstream server using a configured load balancing technique.
 *Usage*
 
 ```go
+url1, err := url.Parse("http://localhost:8081")
+if err != nil {
+  e.Logger.Fatal(err)
+}
+url2, err := url.Parse("http://localhost:8082")
+if err != nil {
+  e.Logger.Fatal(err)
+}
 e.Use(middleware.Proxy(middleware.ProxyConfig{
-  Targets: []*ProxyTarget{
-    &ProxyTarget{
-      URL: "http://t1",
-    },
-    &ProxyTarget{
-      URL: "http://t2",
+  Balancer: &middleware.RoundRobinBalancer{
+    Targets: []*middleware.ProxyTarget{
+      &middleware.ProxyTarget{
+        URL: url1,
+      },
+      &middleware.ProxyTarget{
+        URL: url2,
+      },
     },
   },
 }))
@@ -33,16 +43,13 @@ ProxyConfig struct {
   // Skipper defines a function to skip middleware.
   Skipper Skipper
 
-  // Load balancing technique.
-  // Optional. Default value "random".
-  // Possible values:
-  // - "random"
-  // - "round-robin"
-  Balance string `json:"balance"`
-
-  // Upstream target URLs
+  // Balancer defines a load balancing technique.
   // Required.
-  Targets []*ProxyTarget `json:"targets"`
+  // Possible values:
+  // - RandomBalancer
+  // - RoundRobinBalancer
+  Balancer ProxyBalancer
+}
 ```
 
 *Default Configuration*
@@ -50,4 +57,5 @@ ProxyConfig struct {
 Name | Value
 ---- | -----
 Skipper | DefaultSkipper
-Balance | "random"
+
+## [Example]({{< ref "cookbook/reverse-proxy.md">}})

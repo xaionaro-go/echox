@@ -1,7 +1,6 @@
 +++
 title = "Reverse Proxy"
-description = "Using Echo as reverse proxy server"
-draft = true
+description = "Using Echo as a reverse proxy server"
 [menu.main]
   name = "Reverse Proxy"
   parent = "cookbook"
@@ -9,71 +8,77 @@ draft = true
 
 ## How to use Echo as a reverse proxy server?
 
-### Step 1: Create a `struct` to store upstream servers
+This recipe demonstrates how you can use Echo as a reverse proxy server and load balancer in front of your favorite applications like WordPress, Node.js, Java, Python, Ruby or even Go. For simplicity, I will use Go upstream servers with WebSocket.
 
-### Step 1: Create a HTTP proxy function using `httputil.NewSingleHostReverseProxy`
+### Step 1: Identify upstream target URLs
 
 ```go
-func httpProxy(u *url.URL) http.Handler {
-	return httputil.NewSingleHostReverseProxy(u)
+url1, err := url.Parse("http://localhost:8081")
+if err != nil {
+  e.Logger.Fatal(err)
+}
+url2, err := url.Parse("http://localhost:8082")
+if err != nil {
+  e.Logger.Fatal(err)
 }
 ```
 
-### Step 1: [Generate a self-signed X.509 TLS certificate](/cookbook/http2#step-1-generate-a-self-signed-x-509-tls-certificate)
+### Step 2: Setup proxy middleware with upstream targets
 
-### Step 2: Register route to serve web assets
-
-```go
-e.Static("/", "static")
-```
-
-### Step 3: Create a handler to serve `index.html` and push it's dependencies
+In the following code snippet we are using round-robin load balancing technique. You may also use `middleware.RandomBalancer`.
 
 ```go
-e.GET("/", func(c echo.Context) (err error) {
-  pusher, ok := c.Response().Writer.(http.Pusher)
-  if ok {
-    if err = pusher.Push("/app.css", nil); err != nil {
-      return
-    }
-    if err = pusher.Push("/app.js", nil); err != nil {
-      return
-    }
-    if err = pusher.Push("/echo.png", nil); err != nil {
-      return
-    }
-  }
-  return c.File("index.html")
-})
+e.Use(middleware.Proxy(middleware.ProxyConfig{
+  Balancer: &middleware.RoundRobinBalancer{
+    Targets: []*middleware.ProxyTarget{
+      &middleware.ProxyTarget{
+        URL: url1,
+      },
+      &middleware.ProxyTarget{
+        URL: url2,
+      },
+    },
+  },
+}))
 ```
 
-If `http.Pusher` is supported, web assets are pushed; otherwise, client makes separate requests to get them.
+### Step 3: Start upstream servers
 
-### Step 4: Configure TLS server using `cert.pem` and `key.pem`
+- `cd upstream`
+- In a new terminal start server 1 `go run server.go server1 :8081`
+- In a new terminal start server 2 `go run server.go server2 :8082`
 
-```go
-e.StartTLS(":1323", "cert.pem", "key.pem")
+### Step 3: Start the proxy server
+
+```sh
+go run server.go
 ```
 
-### Step 5: Run the server and browse to https://localhost:1323
+### Step 4: Browse to https://localhost:1323
 
+You should see a webpage with HTTP request being served from "server 1" and WebSocket request from "server 2".
+
+```sh
+HTTP
+
+Hello from upstream server server1
+
+WebSocket
+
+Hello from upstream server server2!
+Hello from upstream server server2!
+Hello from upstream server server2!
 ```
-Protocol: HTTP/2.0
-Host: localhost:1323
-Remote Address: [::1]:60288
-Method: GET
-Path: /
-```
 
-## [Source Code]({{< source "http2-server-push" >}})
+## [Source Code]({{< source "reverse-proxy" >}})
 
-`index.html`
+`upstream/server.go`
 
-{{< embed "http2-server-push/index.html" >}}
+{{< embed "reverse-proxy/upstream/server.go" >}}
 
 `server.go`
 
-{{< embed "http2-server-push/server.go" >}}
+{{< embed "reverse-proxy/server.go" >}}
 
 ## Maintainers
 

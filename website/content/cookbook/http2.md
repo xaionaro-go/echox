@@ -43,9 +43,9 @@ e.GET("/request", func(c echo.Context) error {
 e.StartTLS(":1323", "cert.pem", "key.pem")
 ```
 
-### Step 4: Run the server and browse to https://localhost:1323/request to see the following output
+### Step 4: Start the server and browse to https://localhost:1323/request to see the following output
 
-```
+```sh
 Protocol: HTTP/2.0
 Host: localhost:1323
 Remote Address: [::1]:60288

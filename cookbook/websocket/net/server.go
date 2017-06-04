@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -16,14 +15,14 @@ func hello(c echo.Context) error {
 			// Write
 			err := websocket.Message.Send(ws, "Hello, Client!")
 			if err != nil {
-				log.Fatal(err)
+				c.Logger().Error(err)
 			}
 
 			// Read
 			msg := ""
 			err = websocket.Message.Receive(ws, &msg)
 			if err != nil {
-				log.Fatal(err)
+				c.Logger().Error(err)
 			}
 			fmt.Printf("%s\n", msg)
 		}

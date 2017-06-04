@@ -19,9 +19,10 @@
 ## or in a dependency.
 # ignored = ["github.com/user/project/badpkg"]
 
-## Dependencies define constraints on dependent projects. They are respected by
+## Constraints are rules for how directly imported projects
+## may be incorporated into the depgraph. They are respected by
 ## dep whether coming from the Gopkg.toml of the current project or a dependency.
-# [[dependencies]]
+# [[constraint]]
 ## Required: the root import path of the project being constrained.
 # name = "github.com/user/project"
 #
@@ -41,12 +42,12 @@
 # system1-data = "value that is used by a system"
 # system2-data = "value that is used by another system"
 
-## Overrides have the same structure as [[dependencies]], but supersede all
-## [[dependencies]] declarations from all projects. Only the current project's
-## [[overrides]] are applied.
+## Overrides have the same structure as [[constraint]], but supersede all
+## [[constraint]] declarations from all projects. Only [[override]] from
+## the current project's are applied.
 ##
 ## Overrides are a sledgehammer. Use them only as a last resort.
-# [[overrides]]
+# [[override]]
 ## Required: the root import path of the project being constrained.
 # name = "github.com/user/project"
 #
@@ -65,50 +66,50 @@
 
 
 
-[[dependencies]]
+[[constraint]]
   branch = "master"
   name = "github.com/GeertJohan/go.rice"
 
-[[dependencies]]
+[[constraint]]
   name = "github.com/dgrijalva/jwt-go"
-  version = "^3.0.0"
+  version = "3.0.0"
 
-[[dependencies]]
+[[constraint]]
   branch = "master"
   name = "github.com/facebookgo/grace"
 
-[[dependencies]]
+[[constraint]]
   name = "github.com/gorilla/websocket"
-  version = "^1.1.0"
+  version = "1.1.0"
 
-[[dependencies]]
+[[constraint]]
   branch = "master"
   name = "github.com/labstack/echo"
 
-[[dependencies]]
+[[constraint]]
   name = "github.com/labstack/gommon"
-  version = "^0.2.1"
+  version = "0.2.1"
 
-[[dependencies]]
+[[constraint]]
   name = "github.com/tylerb/graceful"
-  version = "^1.2.15"
+  version = "1.2.15"
 
-[[dependencies]]
+[[constraint]]
   branch = "master"
   name = "github.com/valyala/fasttemplate"
 
-[[dependencies]]
+[[constraint]]
   branch = "master"
   name = "golang.org/x/crypto"
 
-[[dependencies]]
+[[constraint]]
   branch = "master"
   name = "golang.org/x/net"
 
-[[dependencies]]
+[[constraint]]
   name = "google.golang.org/appengine"
-  version = "^1.0.0"
+  version = "1.0.0"
 
-[[dependencies]]
+[[constraint]]
   branch = "v2"
   name = "gopkg.in/mgo.v2"

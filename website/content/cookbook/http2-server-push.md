@@ -46,9 +46,9 @@ If `http.Pusher` is supported, web assets are pushed; otherwise, client makes se
 e.StartTLS(":1323", "cert.pem", "key.pem")
 ```
 
-### Step 5: Run the server and browse to https://localhost:1323
+### Step 5: Start the server and browse to https://localhost:1323
 
-```
+```sh
 Protocol: HTTP/2.0
 Host: localhost:1323
 Remote Address: [::1]:60288
