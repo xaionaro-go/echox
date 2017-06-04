@@ -15,17 +15,19 @@ import (
 	"github.com/labstack/echo"
 )
 
+// TODO: Handle TLS proxy
+
 type (
 	// ProxyConfig defines the config for Proxy middleware.
 	ProxyConfig struct {
 		// Skipper defines a function to skip middleware.
 		Skipper Skipper
 
-		// Balance defines a load balancing technique.
+		// Balancer defines a load balancing technique.
 		// Required.
 		// Possible values:
-		// - ProxyRandom
-		// - ProxyRoundRobin
+		// - RandomBalancer
+		// - RoundRobinBalancer
 		Balancer ProxyBalancer
 	}
 
@@ -34,16 +36,19 @@ type (
 		URL *url.URL
 	}
 
+	// RandomBalancer implements a random load balancing technique.
 	RandomBalancer struct {
 		Targets []*ProxyTarget
 		random  *rand.Rand
 	}
 
+	// RoundRobinBalancer implements a round-robin load balancing technique.
 	RoundRobinBalancer struct {
 		Targets []*ProxyTarget
 		i       uint32
 	}
 
+	// ProxyBalancer defines an interface to implement a load balancing technique.
 	ProxyBalancer interface {
 		Next() *ProxyTarget
 	}
@@ -60,17 +65,16 @@ func proxyRaw(t *ProxyTarget, c echo.Context) http.Handler {
 			c.Error(errors.New("proxy raw, not a hijacker"))
 			return
 		}
-
 		in, _, err := h.Hijack()
 		if err != nil {
-			c.Error(fmt.Errorf("proxy raw hijack error=%v, url=%s", r.URL, err))
+			c.Error(fmt.Errorf("proxy raw, hijack error=%v, url=%s", r.URL, err))
 			return
 		}
 		defer in.Close()
 
 		out, err := net.Dial("tcp", t.URL.Host)
 		if err != nil {
-			he := echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw dial error=%v, url=%s", r.URL, err))
+			he := echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw, dial error=%v, url=%s", r.URL, err))
 			c.Error(he)
 			return
 		}
@@ -78,7 +82,7 @@ func proxyRaw(t *ProxyTarget, c echo.Context) http.Handler {
 
 		err = r.Write(out)
 		if err != nil {
-			he := echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw request copy error=%v, url=%s", r.URL, err))
+			he := echo.NewHTTPError(http.StatusBadGateway, fmt.Sprintf("proxy raw, request copy error=%v, url=%s", r.URL, err))
 			c.Error(he)
 			return
 		}
@@ -93,11 +97,12 @@ func proxyRaw(t *ProxyTarget, c echo.Context) http.Handler {
 		go cp(in, out)
 		err = <-errc
 		if err != nil && err != io.EOF {
-			c.Logger().Errorf("proxy raw error=%v, url=%s", r.URL, err)
+			c.Logger().Errorf("proxy raw, error=%v, url=%s", r.URL, err)
 		}
 	})
 }
 
+// Next randomly returns an upstream target.
 func (r *RandomBalancer) Next() *ProxyTarget {
 	if r.random == nil {
 		r.random = rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
@@ -105,6 +110,7 @@ func (r *RandomBalancer) Next() *ProxyTarget {
 	return r.Targets[r.random.Intn(len(r.Targets))]
 }
 
+// Next returns an upstream target using round-robin technique.
 func (r *RoundRobinBalancer) Next() *ProxyTarget {
 	r.i = r.i % uint32(len(r.Targets))
 	t := r.Targets[r.i]
@@ -126,18 +132,26 @@ func Proxy(config ProxyConfig) echo.MiddlewareFunc {
 		return func(c echo.Context) (err error) {
 			req := c.Request()
 			res := c.Response()
-			t := config.Balancer.Next()
+			tgt := config.Balancer.Next()
+
+			// Fix header
+			if req.Header.Get(echo.HeaderXRealIP) == "" {
+				req.Header.Set(echo.HeaderXRealIP, c.RealIP())
+			}
+			if req.Header.Get(echo.HeaderXForwardedProto) == "" {
+				req.Header.Set(echo.HeaderXForwardedProto, c.Scheme())
+			}
+			if c.IsWebSocket() && req.Header.Get(echo.HeaderXForwardedFor) == "" { // For HTTP, it is automatically set by Go HTTP reverse proxy.
+				req.Header.Set(echo.HeaderXForwardedFor, c.RealIP())
+			}
 
 			// Proxy
-			upgrade := req.Header.Get(echo.HeaderUpgrade)
-			accept := req.Header.Get(echo.HeaderAccept)
-
 			switch {
-			case upgrade == "websocket" || upgrade == "Websocket":
-				proxyRaw(t, c).ServeHTTP(res, req)
-			case accept == "text/event-stream":
+			case c.IsWebSocket():
+				proxyRaw(tgt, c).ServeHTTP(res, req)
+			case req.Header.Get(echo.HeaderAccept) == "text/event-stream":
 			default:
-				proxyHTTP(t).ServeHTTP(res, req)
+				proxyHTTP(tgt).ServeHTTP(res, req)
 			}
 
 			return

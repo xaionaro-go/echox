@@ -65,7 +65,7 @@
   branch = "master"
   name = "github.com/labstack/echo"
   packages = [".","middleware"]
-  revision = "0898d9e68b9e28abe6b85b05c6ac7d0326038c27"
+  revision = "c3887ebb131d996411cf13a9688ab02c8dba599e"
 
 [[projects]]
   name = "github.com/labstack/gommon"
