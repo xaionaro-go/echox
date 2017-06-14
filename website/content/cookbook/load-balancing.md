@@ -42,9 +42,9 @@ server {
 - `go run server.go server1 :8081`
 - `go run server.go server2 :8082` 
 
-### Step 4: Start Nginx
+### Step 4: Restart Nginx
 
-`nginx`
+`service nginx restart`
 
 ### Step 5: Browse to https://localhost:8080
 
