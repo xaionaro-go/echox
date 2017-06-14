@@ -42,6 +42,13 @@ e.Use(middleware.Proxy(middleware.ProxyConfig{
 }))
 ```
 
+To setup proxy for a sub-route use `Echo#Group()`.
+
+```go
+g := e.Group("/blog")
+g.Use(middleware.Proxy(...))
+```
+
 ### Step 3: Start upstream servers
 
 - `cd upstream`

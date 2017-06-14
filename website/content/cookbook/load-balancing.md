@@ -8,7 +8,7 @@ description = "Load balancing multiple Echo servers using a reverse proxy server
 
 This recipe demonstrates how you can use Nginx, HAProxy or Armor as a reverse proxy server and load balance between multiple Echo servers.
 
-## How to setup Nginx wth Echo?
+## How to setup Nginx proxy server wth Echo?
 
 ### Step 1: Install Nginx
 
@@ -18,35 +18,21 @@ https://www.nginx.com/resources/wiki/start/topics/tutorials/install
 
 Create a file `/etc/nginx/sites-enabled/localhost` with the following content:
 
-```nginx
-upstream localhost {
-  server localhost:8081;
-  server localhost:8082;
-}
+{{< embed "load-balancing/nginx.conf" >}}
 
-server {
-  listen          8080;
-  server_name     localhost;
-  access_log      logs/localhost.access.log main;
+> Change listen and server_name per your need.
 
-  location / {
-    proxy_pass      http://localhost;
-  }
-}
-```
-> Replace localhost with your domain e.g. api.labstack.com.
+### Step 3: Restart Nginx
 
-### Step 3: Start upstream servers
+`service nginx restart`
+
+### Step 4: Start upstream servers
 
 - `cd upstream`
 - `go run server.go server1 :8081`
 - `go run server.go server2 :8082` 
 
-### Step 4: Restart Nginx
-
-`service nginx restart`
-
-### Step 5: Browse to https://localhost:8080
+### Step 5: Browse to https://localhost:1323
 
 You should see a webpage being served from "server 1" or "server 2".
 
@@ -54,15 +40,31 @@ You should see a webpage being served from "server 1" or "server 2".
 Hello from upstream server server1
 ```
 
+## How to setup Armor proxy server with Echo?
+
+### Step 1: Install Armor
+
+https://armor.labstack.com/guide
+
+### Step 2: Configure Armor
+
+Create a file `/etc/armor/config.yaml` with the following content:
+
+{{< embed "load-balancing/armor.yaml" >}}
+
+### Step 3: Start Armor
+
+`armor -c /etc/armor/config.yaml`
+
+> Change address and hosts per your need.
+
+### Step 4 & 5: Follow Nginx recipe
+
 ## [Source Code]({{< source "load-balancing" >}})
 
 `upstream/server.go`
 
 {{< embed "load-balancing/upstream/server.go" >}}
-
-`nginx.conf`
-
-{{< embed "load-balancing/nginx.conf" >}}
 
 ## Maintainers
 
