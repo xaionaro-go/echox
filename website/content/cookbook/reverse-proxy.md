@@ -45,8 +45,8 @@ e.Use(middleware.Proxy(middleware.ProxyConfig{
 ### Step 3: Start upstream servers
 
 - `cd upstream`
-- In a new terminal start server 1 `go run server.go server1 :8081`
-- In a new terminal start server 2 `go run server.go server2 :8082`
+- `go run server.go server1 :8081`
+- `go run server.go server2 :8082`
 
 ### Step 3: Start the proxy server
 
