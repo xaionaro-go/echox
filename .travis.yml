@@ -5,7 +5,7 @@ go:
 install:
   - make dependency
 script:
-  - make build
+  - make test 
 matrix:
   allow_failures:
     - go: tip
