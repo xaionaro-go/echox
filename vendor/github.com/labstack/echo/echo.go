@@ -434,7 +434,11 @@ func (e *Echo) Static(prefix, root string) {
 
 func static(i i, prefix, root string) {
 	h := func(c Context) error {
-		name := filepath.Join(root, path.Clean("/"+c.Param("*"))) // "/"+ for security
+		p, err := PathUnescape(c.Param("*"))
+		if err != nil {
+			return err
+		}
+		name := filepath.Join(root, path.Clean("/"+p)) // "/"+ for security
 		return c.File(name)
 	}
 	i.GET(prefix, h)

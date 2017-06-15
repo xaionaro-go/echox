@@ -18,15 +18,13 @@ func main() {
 	if err != nil {
 		e.Logger.Fatal(err)
 	}
-	e.Use(middleware.Proxy(middleware.ProxyConfig{
-		Balancer: &middleware.RoundRobinBalancer{
-			Targets: []*middleware.ProxyTarget{
-				&middleware.ProxyTarget{
-					URL: url1,
-				},
-				&middleware.ProxyTarget{
-					URL: url2,
-				},
+	e.Use(middleware.Proxy(&middleware.RoundRobinBalancer{
+		Targets: []*middleware.ProxyTarget{
+			&middleware.ProxyTarget{
+				URL: url1,
+			},
+			&middleware.ProxyTarget{
+				URL: url2,
 			},
 		},
 	}))

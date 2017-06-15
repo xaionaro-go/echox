@@ -21,18 +21,25 @@ url2, err := url.Parse("http://localhost:8082")
 if err != nil {
   e.Logger.Fatal(err)
 }
-e.Use(middleware.Proxy(middleware.ProxyConfig{
-  Balancer: &middleware.RoundRobinBalancer{
-    Targets: []*middleware.ProxyTarget{
-      &middleware.ProxyTarget{
-        URL: url1,
-      },
-      &middleware.ProxyTarget{
-        URL: url2,
-      },
+e.Use(middleware.Proxy(&middleware.RoundRobinBalancer{
+  Targets: []*middleware.ProxyTarget{
+    &middleware.ProxyTarget{
+      URL: url1,
+    },
+    &middleware.ProxyTarget{
+      URL: url2,
     },
   },
 }))
+```
+
+## Custom Configuration
+
+*Usage*
+
+```go
+e := echo.New()
+e.Use(middleware.ProxyWithConfig(middleware.ProxyConfig{}))
 ```
 
 ## Configuration

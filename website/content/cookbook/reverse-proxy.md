@@ -28,15 +28,13 @@ if err != nil {
 In the following code snippet we are using round-robin load balancing technique. You may also use `middleware.RandomBalancer`.
 
 ```go
-e.Use(middleware.Proxy(middleware.ProxyConfig{
-  Balancer: &middleware.RoundRobinBalancer{
-    Targets: []*middleware.ProxyTarget{
-      &middleware.ProxyTarget{
-        URL: url1,
-      },
-      &middleware.ProxyTarget{
-        URL: url2,
-      },
+e.Use(middleware.Proxy(&middleware.RoundRobinBalancer{
+  Targets: []*middleware.ProxyTarget{
+    &middleware.ProxyTarget{
+      URL: url1,
+    },
+    &middleware.ProxyTarget{
+      URL: url2,
     },
   },
 }))
