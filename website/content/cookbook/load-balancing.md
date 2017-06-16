@@ -1,12 +1,12 @@
 +++
 title = "Load Balancing Recipe"
-description = "Load balancing multiple Echo servers using a reverse proxy server like Nginx, HAProxy and Armor."
+description = "Load balancing multiple Echo servers using a reverse proxy server like Nginx, Armor."
 [menu.main]
   name = "Load Balancing"
   parent = "cookbook"
 +++
 
-This recipe demonstrates how you can use Nginx, HAProxy or Armor as a reverse proxy server and load balance between multiple Echo servers.
+This recipe demonstrates how you can use Nginx or Armor as a reverse proxy server and load balance between multiple Echo servers.
 
 ## How to setup Nginx proxy server wth Echo?
 
