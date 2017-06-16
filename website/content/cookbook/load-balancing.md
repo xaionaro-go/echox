@@ -1,5 +1,5 @@
 +++
-title = "Load Balancing"
+title = "Load Balancing Recipe"
 description = "Load balancing multiple Echo servers using a reverse proxy server like Nginx, HAProxy and Armor."
 [menu.main]
   name = "Load Balancing"

@@ -1,6 +1,6 @@
 +++
-title = "WebSocket"
-description = "WebSocket example for Echo"
+title = "WebSocket Recipe"
+description = "WebSocket recipe for Echo"
 [menu.main]
   name = "WebSocket"
   parent = "cookbook"

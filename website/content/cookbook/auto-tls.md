@@ -1,12 +1,12 @@
 +++
-title = "Auto TLS"
-description = "Automatic TLS certificates from Let's Encrypt example for Echo"
+title = "Auto TLS Recipe"
+description = "Automatic TLS certificates from Let's Encrypt recipe for Echo"
 [menu.main]
   name = "Auto TLS"
   parent = "cookbook"
 +++
 
-This example shows how to obtain TLS certificates for a domain automatically from
+This recipe demonstrates how to obtain TLS certificates for a domain automatically from
 Let's Encrypt. `Echo#StartAutoTLS` accepts an address which should listen on port `443`.
 
 Browse to `https://<DOMAIN>`. If everything goes fine, you should see a welcome

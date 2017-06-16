@@ -1,6 +1,6 @@
 +++
-title = "CRUD"
-description = "CRUD (Create, read, update and delete) example for Echo"
+title = "CRUD Recipe"
+description = "CRUD (Create, read, update and delete) recipe for Echo"
 [menu.main]
   name = "CRUD"
   parent = "cookbook"

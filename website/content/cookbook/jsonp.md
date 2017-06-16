@@ -1,6 +1,6 @@
 +++
-title = "JSONP"
-description = "JSONP example for Echo"
+title = "JSONP Recipe"
+description = "JSONP recipe for Echo"
 [menu.main]
   name = "JSONP"
   parent = "cookbook"

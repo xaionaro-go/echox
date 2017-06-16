@@ -1,6 +1,6 @@
 +++
-title = "HTTP/2 Server Push"
-description = "HTTP/2 server push example for Echo"
+title = "HTTP/2 Server Push Recipe"
+description = "HTTP/2 server push recipe for Echo"
 [menu.main]
   name = "HTTP/2 Server Push"
   parent = "cookbook"

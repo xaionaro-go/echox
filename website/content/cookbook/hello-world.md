@@ -1,6 +1,6 @@
 +++
-title = "Hello World"
-description = "Hello world example for Echo"
+title = "Hello World Recipe"
+description = "Hello world recipe for Echo"
 [menu.main]
   name = "Hello World"
   parent = "cookbook"

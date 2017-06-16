@@ -1,6 +1,6 @@
 +++
-title = "File Upload"
-description = "File upload example for Echo"
+title = "File Upload Recipe"
+description = "File upload recipe for Echo"
 [menu.main]
   name = "File Upload"
   parent = "cookbook"

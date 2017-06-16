@@ -1,9 +1,9 @@
 +++
-title = "JWT"
-description = "JWT example for Echo"
+title = "JWT Recipe"
+description = "JWT recipe for Echo"
 [menu.main]
   name = "JWT"
-  identifier = "example-jwt"
+  identifier = "cookbook-jwt"
   parent = "cookbook"
 +++
 

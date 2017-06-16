@@ -1,5 +1,5 @@
 +++
-title = "Reverse Proxy"
+title = "Reverse Proxy Recipe"
 description = "Using Echo as a reverse proxy server"
 [menu.main]
   name = "Reverse Proxy"

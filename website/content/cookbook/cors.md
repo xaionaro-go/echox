@@ -1,6 +1,6 @@
 +++
-title = "CORS"
-description = "CORS example for Echo"
+title = "CORS Recipe"
+description = "CORS recipe for Echo"
 [menu.main]
   name = "CORS"
   identifier = "middleware-cors"

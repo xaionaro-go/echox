@@ -1,6 +1,6 @@
 +++
-title = "Subdomains"
-description = "Subdomains example for Echo"
+title = "Subdomains Recipe"
+description = "Subdomains recipe for Echo"
 [menu.main]
   name = "Subdomains"
   parent = "cookbook"

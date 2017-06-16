@@ -1,6 +1,6 @@
 +++
-title = "Embed Resources"
-description = "Embed resources example for Echo"
+title = "Embed Resources Recipe"
+description = "Embed resources recipe for Echo"
 [menu.main]
   name = "Embed Resources"
   parent = "cookbook"

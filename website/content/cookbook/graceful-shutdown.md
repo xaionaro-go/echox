@@ -1,6 +1,6 @@
 +++
-title = "Graceful Shutdown"
-description = "Graceful shutdown example for Echo"
+title = "Graceful Shutdown Recipe"
+description = "Graceful shutdown recipe for Echo"
 [menu.main]
   name = "Graceful Shutdown"
   parent = "cookbook"

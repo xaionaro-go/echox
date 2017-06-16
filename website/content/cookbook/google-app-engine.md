@@ -1,6 +1,6 @@
 +++
-title = "Google App Engine"
-description = "Google App Engine example for Echo"
+title = "Google App Engine Recipe"
+description = "Google App Engine recipe for Echo"
 [menu.main]
   name = "Google App Engine"
   parent = "cookbook"

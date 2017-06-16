@@ -1,6 +1,6 @@
 +++
-title = "Middleware"
-description = "Middleware example for Echo"
+title = "Middleware Recipe"
+description = "Middleware recipe for Echo"
 [menu.main]
   name = "Middleware"
   parent = "cookbook"

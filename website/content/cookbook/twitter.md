@@ -1,12 +1,12 @@
 +++
-title = "Twitter Like API"
-description = "Twitter Like API example for Echo"
+title = "Twitter Like API Recipe"
+description = "Twitter Like API recipe for Echo"
 [menu.main]
   name = "Twitter"
   parent = "cookbook"
 +++
 
-This example shows how to create a Twitter like REST API using MongoDB (Database),
+This recipe demonstrates how to create a Twitter like REST API using MongoDB (Database),
 JWT (API security) and JSON (Data exchange).
 
 ## Models

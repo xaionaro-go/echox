@@ -1,6 +1,6 @@
 +++
-title = "Streaming Response"
-description = "Streaming response example for Echo"
+title = "Streaming Response Recipe"
+description = "Streaming response recipe for Echo"
 [menu.main]
   name = "Streaming Response"
   parent = "cookbook"
