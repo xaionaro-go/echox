@@ -30,7 +30,7 @@ import "github.com/labstack/echo-contrib/casbin" casbin-mw
 
 ```go
 e := echo.New()
-e.Use(casbin-mw.Auth(casbin.NewEnforcer("casbin_auth_model.conf", "casbin_auth_policy.csv")))
+e.Use(casbin-mw.Middleware(casbin.NewEnforcer("casbin_auth_model.conf", "casbin_auth_policy.csv")))
 ```
 
 - For syntax, see: [Model.md](https://github.com/casbin/casbin/blob/master/Model.md)
@@ -45,10 +45,7 @@ e := echo.New()
 ce := casbin.NewEnforcer("casbin_auth_model.conf", "")
 ce.AddRoleForUser("alice", "admin")
 ce.AddPolicy(...)
-
-e.Use(casbin-mw.Auth(ce))
-// or
-e.Use(casbin-mw.AuthWithConfig(casbin-mw.AuthConfig(
+e.Use(casbin-mw.MiddlewareWithConfig(casbin-mw.Config(
     Enforcer: ce,
 )))
 ```
@@ -57,10 +54,11 @@ e.Use(casbin-mw.AuthWithConfig(casbin-mw.AuthConfig(
 
 ```go
 type (
-  // AuthConfig defines the config for CasbinAuth middleware.
-	AuthConfig struct {
+  // Config defines the config for CasbinAuth middleware.
+	Config struct {
 		// Skipper defines a function to skip middleware.
 		Skipper middleware.Skipper
+
 		// Enforcer CasbinAuth main rule.
 		// Required.
 		Enforcer *casbin.Enforcer
@@ -71,8 +69,8 @@ type (
 *Default Configuration*
 
 ```go
-// DefaultAuthConfig is the default CasbinAuth middleware config.
-DefaultAuthConfig = AuthConfig{
+// DefaultConfig is the default CasbinAuth middleware config.
+DefaultConfig = Config{
   Skipper: middleware.DefaultSkipper,
 }
 ```
