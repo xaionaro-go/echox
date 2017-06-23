@@ -22,8 +22,13 @@ description = "Casbin Auth middleware for Echo. It supports access control model
 - RESTful
 - Deny-override: both allow and deny authorizations are supported, deny overrides the allow.
 
+## Dependencies
+
 ```go
-import "github.com/labstack/echo-contrib/casbin" casbin-mw
+import (
+  "github.com/casbin/casbin"
+  "github.com/labstack/echo-contrib/casbin" casbin-mw
+)
 ```
 
 *Usage*
@@ -33,7 +38,7 @@ e := echo.New()
 e.Use(casbin-mw.Middleware(casbin.NewEnforcer("casbin_auth_model.conf", "casbin_auth_policy.csv")))
 ```
 
-- For syntax, see: [Model.md](https://github.com/casbin/casbin/blob/master/Model.md)
+For syntax, see: [Model.md](https://github.com/casbin/casbin/blob/master/Model.md).
 
 
 ## Custom Configuration
@@ -46,24 +51,22 @@ ce := casbin.NewEnforcer("casbin_auth_model.conf", "")
 ce.AddRoleForUser("alice", "admin")
 ce.AddPolicy(...)
 e.Use(casbin-mw.MiddlewareWithConfig(casbin-mw.Config(
-    Enforcer: ce,
+  Enforcer: ce,
 )))
 ```
 
 ## Configuration
 
 ```go
-type (
-  // Config defines the config for CasbinAuth middleware.
-	Config struct {
-		// Skipper defines a function to skip middleware.
-		Skipper middleware.Skipper
+// Config defines the config for CasbinAuth middleware.
+Config struct {
+  // Skipper defines a function to skip middleware.
+  Skipper middleware.Skipper
 
-		// Enforcer CasbinAuth main rule.
-		// Required.
-		Enforcer *casbin.Enforcer
-	}
-)
+  // Enforcer CasbinAuth main rule.
+  // Required.
+  Enforcer *casbin.Enforcer
+}
 ```
 
 *Default Configuration*
