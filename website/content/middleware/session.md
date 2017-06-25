@@ -7,6 +7,8 @@ description = "Session middleware for Echo"
   weight = 3
 +++
 
+> Echo community contribution 
+
 Session middleware facilitates HTTP session management backed by [gorilla/sessions]
 (https://github.com/gorilla/sessions). The default implementation provides cookie and
 filesystem based session store; however, you can take advantage of [community maintained
