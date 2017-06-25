@@ -7,7 +7,7 @@ description = "Casbin Auth middleware for Echo. It supports access control model
   weight = 2
 +++
 
-> Echo community middleware
+> Echo community contribution 
 
 [Casbin](https://github.com/casbin/casbin) is a powerful and efficient open-source access control library for Go. It provides support for enforcing authorization based on various models. By far, the access control models supported by Casbin are:
 
