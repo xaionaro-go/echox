@@ -1,6 +1,6 @@
 +++
 title = "Casbin Auth Middleware"
-description = "Casbin Auth middleware for Echo. It supports access control models like ACL, RBAC, ABAC"
+description = "Casbin Auth middleware for Echo. It supports access control models like ACL, RBAC, ABAC."
 [menu.main]
   name = "Casbin Auth"
   parent = "middleware"
