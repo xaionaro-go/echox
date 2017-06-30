@@ -20,7 +20,7 @@ Create a file `/etc/nginx/sites-enabled/localhost` with the following content:
 
 {{< embed "load-balancing/nginx.conf" >}}
 
-> Change listen and server_name per your need.
+> Change listen, server_name, access_log per your need.
 
 ### Step 3: Restart Nginx
 
@@ -32,7 +32,7 @@ Create a file `/etc/nginx/sites-enabled/localhost` with the following content:
 - `go run server.go server1 :8081`
 - `go run server.go server2 :8082` 
 
-### Step 5: Browse to https://localhost:1323
+### Step 5: Browse to https://localhost:8080
 
 You should see a webpage being served from "server 1" or "server 2".
 
