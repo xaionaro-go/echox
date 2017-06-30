@@ -13,16 +13,15 @@
             <section>
               <h1>{{ .Title }}</h1>
               {{ .Content }}
+              <h2><a href="https://forum.labstack.com">Got a question?</a></h2>
             </section>
             <footer>
-              <div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
-                <p>
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                  <a href="https://github.com/labstack/echo/blob/master/website/content/{{ .File.Path }}">
-                    Edit this page on GitHub
-                  </a>
-                </p>
-              </div>
+              <hr>
+              Caught a mistake?
+              <a 
+                href="https://github.com/labstack/echo/blob/master/website/content/{{ .File.Path }}">
+                 <i class="fa fa-pencil" aria-hidden="true"></i> Edit this page on GitHub!
+              </a>
             </footer>
           </article>
         </div>

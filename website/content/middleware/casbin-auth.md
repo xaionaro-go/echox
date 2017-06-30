@@ -4,7 +4,6 @@ description = "Casbin Auth middleware for Echo. It supports access control model
 [menu.main]
   name = "Casbin Auth"
   parent = "middleware"
-  weight = 2
 +++
 
 > Echo community contribution 

@@ -4,7 +4,6 @@ description = "Trailing slash middleware for Echo"
 [menu.main]
   name = "Trailing Slash"
   parent = "middleware"
-  weight = 6
 +++
 
 ## Add Trailing Slash  

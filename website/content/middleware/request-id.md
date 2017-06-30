@@ -4,7 +4,6 @@ description = "Request ID middleware for Echo"
 [menu.main]
   name = "Request ID"
   parent = "middleware"
-  weight = 5
 +++
 
 Request ID middleware generates a unique id for a request.

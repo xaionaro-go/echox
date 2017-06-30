@@ -4,7 +4,6 @@ description = "Reverse proxy middleware for Echo"
 [menu.main]
   name = "Proxy"
   parent = "middleware"
-  weight = 6
 +++
 
 Proxy provides an HTTP/WebSocket reverse proxy middleware. It forwards a request

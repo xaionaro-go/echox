@@ -4,7 +4,6 @@ description = "Session middleware for Echo"
 [menu.main]
   name = "Session"
   parent = "middleware"
-  weight = 3
 +++
 
 > Echo community contribution 

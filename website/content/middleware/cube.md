@@ -1,10 +1,9 @@
 +++
-title = "Cube Middleware"
+date = "2014-09-09"
 description = "Cube middleware for Echo. It provides HTTP analytics."
 [menu.main]
   name = "Cube"
   parent = "middleware"
-  weight = 1
 +++
 
 Cube provides analytics for HTTP traffic. You can measure server latency, data transfer, discover top endpoints, top clients, slow requests and visualize key metrics such as total requests, client errors, server errors, status codes in a time series chart.
@@ -35,7 +34,7 @@ e.Use(cube.Middleware("<YOUR_API_KEY>"))
 e := echo.New()
 e.Use(cube.MiddlewareWithConfig(cube.Config{
   APIKey: "<YOUR_API_KEY>",
-  BatchInterval: 300, // 5 minutes
+  DispatchInterval: 5 * 60, // 5 minutes
 }))
 ```
 
@@ -60,7 +59,7 @@ Config struct {
   BatchSize int `json:"batch_size"`
 
   // Interval in seconds to dispatch the batch
-  BatchInterval time.Duration `json:"batch_interval"`
+  DispatchInterval time.Duration `json:"dispatch_interval"`
 
   ClientLookup string `json:"client_lookup"`
 }
@@ -77,6 +76,6 @@ DefaultConfig = Config{
     return false
   },
   BatchSize:     60,
-  BatchInterval: 60,
+  DispatchInterval: 60,
 }
 ```
