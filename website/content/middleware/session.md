@@ -6,12 +6,12 @@ description = "Session middleware for Echo"
   parent = "middleware"
 +++
 
-> Echo community contribution 
-
 Session middleware facilitates HTTP session management backed by [gorilla/sessions]
 (https://github.com/gorilla/sessions). The default implementation provides cookie and
 filesystem based session store; however, you can take advantage of [community maintained
 implementation](https://github.com/gorilla/sessions#store-implementations) for various backends.
+
+> Echo community contribution 
 
 ## Dependencies
 
