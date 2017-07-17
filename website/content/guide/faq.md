@@ -6,12 +6,16 @@ description = "Frequently asked questions in Echo"
   parent = "guide"
 +++
 
-Q: How to retrieve `*http.Request` and `http.ResponseWriter` from `echo.Context`?
+## How to retrieve `*http.Request` and `http.ResponseWriter` from `echo.Context`?
 
-- `http.Request` > `c.Request()`
-- `http.ResponseWriter` > `c.Response()`
+```go
+func(c echo.Context) error {
+	req := c.Request()
+	res := c.Response()
+}
+```
 
-Q: How to use standard handler `func(http.ResponseWriter, *http.Request)` with Echo?
+## How to use standard handler `func(http.ResponseWriter, *http.Request)` with Echo?
 
 ```go
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +29,7 @@ func main() {
 }
 ```
 
-Q: How to use standard middleware `func(http.Handler) http.Handler` with Echo?
+## How to use standard middleware `func(http.Handler) http.Handler` with Echo?
 
 ```go
 func middleware(h http.Handler) http.Handler {
@@ -45,19 +49,19 @@ func main() {
 }
 ```
 
-Q: How to run Echo on a specific IP address?
+## How to run Echo on a specific IP address?
 
 ```go
 e.Start("<ip>:<port>")
 ```
 
-Q: How to run Echo on a random port?
+## How to run Echo on a random port?
 
 ```go
 e.Start(":0")
 ```
 
-Q: How to run Echo on a unix domain socket?
+## How to run Echo on a unix domain socket?
 
 ```go
 e := echo.New()
@@ -76,4 +80,33 @@ e.Logger.Fatal(e.Start(""))
 ```sh
 curl --unix-socket /tmp/echo.sock http://localhost
 ```
+
+## How to get the remote client IP address?
+
+```go
+func (c echo.Context) error {
+	ip := c.RealIP()
+}
+```
+
+## How to get a query string parameter?
+
+```go
+func (c echo.Context) error {
+	value := c.QueryParam("<PARAM_NAME>")
+	values := c.QueryParams() // Returns a map of query parameters
+	qs := c.QueryString() // Returns the query string
+}
+```
+
+## How to get a form parameter?
+
+```go
+func (c echo.Context) error {
+	value := c.FormParam("<PARAM_NAME>")
+	values := c.FormParams() // Returns a map of form parameters
+}
+```
+
+
 

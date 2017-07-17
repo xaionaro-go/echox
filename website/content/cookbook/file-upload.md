@@ -6,7 +6,7 @@ description = "File upload recipe for Echo"
   parent = "cookbook"
 +++
 
-## Upload single file with fields
+## How to upload a single file with parameters?
 
 ### Server
 
@@ -20,7 +20,7 @@ description = "File upload recipe for Echo"
 
 {{< embed "file-upload/single/public/index.html" >}}
 
-## Upload multiple files with fields
+## How to upload multiple files with parameters?
 
 ### Server
 

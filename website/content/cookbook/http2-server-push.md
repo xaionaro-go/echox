@@ -12,7 +12,7 @@ description = "HTTP/2 server push recipe for Echo"
 
 ### Step 1: [Generate a self-signed X.509 TLS certificate](/cookbook/http2#step-1-generate-a-self-signed-x-509-tls-certificate)
 
-### Step 2: Register route to serve web assets
+### Step 2: Register a route to serve web assets
 
 ```go
 e.Static("/", "static")
