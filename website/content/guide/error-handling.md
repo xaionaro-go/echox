@@ -50,6 +50,8 @@ If logging is on, the error message is also logged.
 
 ## Custom HTTP Error Handler
 
+Custom HTTP error handler can be set via `e.HTTPErrorHandler`
+
 For most cases default error HTTP handler should be sufficient; however, a custom HTTP
 error handler can come handy if you want to capture different type of errors and
 take action accordingly e.g. send notification email or log error to a centralized
@@ -74,6 +76,8 @@ func customHTTPErrorHandler(err error, c echo.Context) {
 	}
 	c.Logger().Error(err)
 }
+
+e.HTTPErrorHandler = customHTTPErrorHandler
 ```
 
 > Instead of writing logs to the logger, you can also write them to an external service like Elasticsearch or Splunk.
