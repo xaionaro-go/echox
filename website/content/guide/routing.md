@@ -97,15 +97,13 @@ g.Use(middleware.BasicAuth(func(username, password string) bool {
 Each of the registration methods returns a `Route` object, which can be used to name a route after the registration. For example:
 
 ```go
-routeInfo := e.GET("/users/:id", func(c echo.Context) error {
-	return c.String(http.StatusOK, "/users/:id")
+route := e.POST("/users", func(c echo.Context) error {
 })
-routeInfo.Name = "user"
+route.Name = "create-user"
 
 // or using the inline syntax
-e.GET("/users/new", func(c echo.Context) error {
-	return c.String(http.StatusOK, "/users/new")
-}).Name = "newuser"
+e.GET("/users/:id", func(c echo.Context) error {
+}).Name = "get-user"
 ```
 
 Route names can be very useful when generating URIs from the templates, where you can't access the handler references or when you have multiple routes with the same handler.
@@ -185,22 +183,22 @@ ioutil.WriteFile("routes.json", data, 0644)
   {
     "method": "POST",
     "path": "/users",
-    "handler": "main.createUser"
+    "name": "main.createUser"
   },
   {
     "method": "GET",
     "path": "/users",
-    "handler": "main.findUser"
+    "name": "main.findUser"
   },
   {
     "method": "PUT",
     "path": "/users",
-    "handler": "main.updateUser"
+    "name": "main.updateUser"
   },
   {
     "method": "DELETE",
     "path": "/users",
-    "handler": "main.deleteUser"
+    "name": "main.deleteUser"
   }
 ]
 ```

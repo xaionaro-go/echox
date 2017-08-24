@@ -24,7 +24,7 @@ To completely disable logs use `Echo#Logger.SetOutput(ioutil.Discard)` or `Echo#
 ### Log Level
 
 `Echo#Logger.SetLevel(log.Lvl)` can be used to set the log level for the logger.
-Default value is `OFF`. Possible values:
+Default value is `ERROR`. Possible values:
 
 - `DEBUG`
 - `INFO`
