@@ -1,5 +1,5 @@
 +++
-date = "2014-09-09"
+title = "Cube Middleware"
 description = "Cube middleware for Echo. It provides HTTP analytics."
 [menu.main]
   name = "Cube"
@@ -26,7 +26,7 @@ import (
 
 ```go
 e := echo.New()
-e.Use(cube.Middleware("<YOUR_API_KEY>"))
+e.Use(cube.Middleware("<ACCOUNT_ID>", "<API_KEY>"))
 ```
 
 ## Custom Configuration
@@ -36,7 +36,8 @@ e.Use(cube.Middleware("<YOUR_API_KEY>"))
 ```go
 e := echo.New()
 e.Use(cube.MiddlewareWithConfig(cube.Config{
-  APIKey: "<YOUR_API_KEY>",
+  AccountID: "<ACCOUNT_ID>",
+  APIKey: "<API_KEY>",
   DispatchInterval: 5 * 60, // 5 minutes
 }))
 ```
@@ -47,13 +48,16 @@ e.Use(cube.MiddlewareWithConfig(cube.Config{
 // Config defines the config for Cube middleware.
 Config struct {
   // Skipper defines a function to skip middleware.
-  Skipper Skipper
+  Skipper middleware.Skipper
 
-  // App ID 
-  AppID string `json:"app_id"`
+  // App ID
+  AppID string
 
-  // App name 
-  AppName string `json:"app_name"`
+  // App name
+  AppName string
+
+  // LabStack Account ID
+  AccountID string `json:"account_id"`
 
   // LabStack API key
   APIKey string `json:"api_key"`
@@ -64,6 +68,7 @@ Config struct {
   // Interval in seconds to dispatch the batch
   DispatchInterval time.Duration `json:"dispatch_interval"`
 
+  // TODO: To be implemented
   ClientLookup string `json:"client_lookup"`
 }
 ```
