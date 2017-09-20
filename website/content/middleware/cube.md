@@ -7,7 +7,7 @@ description = "Cube middleware for Echo. It provides HTTP analytics."
 +++
 
 
-Cube provides analytics for HTTP traffic. You can measure server latency, data transfer, discover top endpoints, top clients, slow requests and visualize key metrics such as total requests, client errors, server errors, status codes in a time series chart.
+Cube provides analytics, monitoring and alerting for HTTP traffic. You can measure server latency, data transfer, discover top endpoints, top clients, slow requests and visualize key metrics such as total requests, client errors, server errors, status codes in a time series chart.
 
 API key: https://labstack.com/signup<br>
 Dashboard access: https://labstack.com/cube
