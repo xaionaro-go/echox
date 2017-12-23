@@ -59,7 +59,7 @@ g.Use(middleware.Proxy(...))
 go run server.go
 ```
 
-### Step 4: Browse to https://localhost:1323
+### Step 4: Browse to http://localhost:1323
 
 You should see a webpage with HTTP request being served from "server 1" and WebSocket request from "server 2".
 
