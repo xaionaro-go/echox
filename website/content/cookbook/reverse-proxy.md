@@ -21,23 +21,22 @@ url2, err := url.Parse("http://localhost:8082")
 if err != nil {
   e.Logger.Fatal(err)
 }
+targets := []*middleware.ProxyTarget{
+  &middleware.ProxyTarget{
+    URL: url1,
+  },
+  &middleware.ProxyTarget{
+    URL: url2,
+  },
+}
 ```
 
 ### Step 2: Setup proxy middleware with upstream targets
 
-In the following code snippet we are using round-robin load balancing technique. You may also use `middleware.RandomBalancer`.
+In the following code snippet we are using round-robin load balancing technique. You may also use `middleware.NewRandomBalancer()`.
 
 ```go
-e.Use(middleware.Proxy(&middleware.RoundRobinBalancer{
-  Targets: []*middleware.ProxyTarget{
-    &middleware.ProxyTarget{
-      URL: url1,
-    },
-    &middleware.ProxyTarget{
-      URL: url2,
-    },
-  },
-}))
+e.Use(middleware.Proxy(middleware.NewRoundRobinBalancer(targets)))
 ```
 
 To setup proxy for a sub-route use `Echo#Group()`.
