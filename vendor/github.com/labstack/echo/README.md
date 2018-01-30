@@ -1,4 +1,4 @@
-<a href="https://echo.labstack.com"><img height="80" src="https://labstack.com/images/echo-logo.svg"></a>
+<a href="https://echo.labstack.com"><img height="80" src="https://cdn.labstack.com/images/echo-logo.svg"></a>
 
 [![Sourcegraph](https://sourcegraph.com/github.com/labstack/echo/-/badge.svg?style=flat-square)](https://sourcegraph.com/github.com/labstack/echo?badge)
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/labstack/echo)
@@ -26,9 +26,42 @@
 
 ## Performance
 
-![Performance](https://i.imgur.com/F2V7TfO.png)
+<img src="https://api.labstack.com/chart/bar?values=20015,39584,7282,11276&labels=Static,GitHub%20API,Parse%20API,Google%20Plus%20API&x_title=Route&y_title=Time%20(ns/op)&colors=c" width=500 height=400>
 
-## [Get Started](https://echo.labstack.com/guide)
+## [Guide](https://echo.labstack.com/guide)
+
+### Example
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+)
+
+func main() {
+	// Echo instance
+	e := echo.New()
+
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	// Routes
+	e.GET("/", hello)
+
+	// Start server
+	e.Logger.Fatal(e.Start(":1323"))
+}
+
+// Handler
+func hello(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello, World!")
+}
+```
 
 ## Support Us
 
