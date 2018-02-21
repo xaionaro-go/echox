@@ -22,10 +22,10 @@ if err != nil {
 }
 e.Use(middleware.Proxy(&middleware.RoundRobinBalancer{
   Targets: []*middleware.ProxyTarget{
-    &middleware.ProxyTarget{
+    {
       URL: url1,
     },
-    &middleware.ProxyTarget{
+    {
       URL: url2,
     },
   },

@@ -22,10 +22,10 @@ func main() {
 		e.Logger.Fatal(err)
 	}
 	targets := []*middleware.ProxyTarget{
-		&middleware.ProxyTarget{
+		{
 			URL: url1,
 		},
-		&middleware.ProxyTarget{
+		{
 			URL: url2,
 		},
 	}
