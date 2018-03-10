@@ -6,10 +6,6 @@
       <input id="search-box" type="text" class="w3-input">
     </span>
     <span class="menu hide-small hide-medium">
-      {{ $currentNode := . }}
-      {{ range .Site.Menus.main }}
-        <a{{ if or ($currentNode.HasMenuCurrent "main" .) ($currentNode.IsMenuCurrent "main" .) }} class="active"{{ end }} href="{{ .URL }}">{{ .Name }}</a>
-      {{ end }}
       <a href="https://forum.labstack.com">Forum</a>
       <a href="https://gitter.im/labstack/echo">Chat</a>
     </span>

@@ -4,10 +4,9 @@ description = "Echo middleware"
 type = "middleware"
 [menu.main]
   name = "Middleware"
-  pre = "<i class='fa fa-filter'></i>"
+  pre = "<i class='fas fa-filter'></i>"
   weight = 2
   identifier = "middleware"
-  url = "/middleware"
 +++
 
 ## Overview
