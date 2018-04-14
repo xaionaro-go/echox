@@ -1,10 +1,10 @@
 <nav class="sidenav2">
   <div class="w3-container">
-    {{ $currentNode := . }}
-    <ul class="menu-top menu-l1">
+    <ul class="menu-top menu-l1 hide-large">
       <li><a href="https://forum.labstack.com">Forum</a></li>
       <li><a href="https://gitter.im/labstack/echo">Chat</a></li>
     </ul>
+    {{ $currentNode := . }}
     <ul class="menu-l1">
       {{ range .Site.Menus.main }}
       <a{{ if $currentNode.IsMenuCurrent "main" . }} class="active"{{ end }} href="{{ substr .URL 0 -1 }}">{{ .Pre }} {{ .Name }}</a>

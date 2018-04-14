@@ -2,7 +2,7 @@ dependency:
 	go get -u github.com/golang/dep/cmd/dep
 	dep ensure -update
 
-build:
+website:
 	cd website && rm -rf public && hugo
 
 test:
@@ -13,4 +13,4 @@ test:
 serve:
 	cd website && hugo serve
 
-.PHONY: dependency build serve 
+.PHONY: dependency website serve 
