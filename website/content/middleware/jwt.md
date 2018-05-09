@@ -78,4 +78,4 @@ DefaultJWTConfig = JWTConfig{
 }
 ```
 
-## [Example]({{< ref "cookbook/jwt.md">}})
+## [Example](/cookbook/jwt)

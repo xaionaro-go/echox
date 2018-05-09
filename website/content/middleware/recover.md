@@ -8,7 +8,7 @@ description = "Recover middleware for Echo"
 
 Recover middleware recovers from panics anywhere in the chain, prints stack trace
 and handles the control to the centralized
-[HTTPErrorHandler]({{< ref "guide/customization.md#http-error-handler">}}).
+[HTTPErrorHandler](/guide/customization#http-error-handler).
 
 *Usage*
 

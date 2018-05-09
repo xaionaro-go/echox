@@ -319,3 +319,31 @@ func(c echo.Context) error {
   return c.Redirect(http.StatusMovedPermanently, "<URL>")
 }
 ```
+
+## Hooks
+
+### Before Response
+
+`Context#Response#Before(func())` can be used to register a function which is called just before the response is written.
+
+### After Response
+
+`Context#Response#After(func())` can be used to register a function which is called just
+after the response is written. If the "Content-Length" is unknown, none of the after
+function is executed.
+
+*Example*
+
+```go
+func(c echo.Context) error {
+  c.Response().After(func() {
+    println("before response")
+  })
+  c.Response().After(func() {
+    println("after response")
+  })
+  return c.NoContent(http.StatusNoContent)
+}
+```
+
+> It possible to register multiple before and after functions

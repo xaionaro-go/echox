@@ -64,4 +64,4 @@ Name | Value
 ---- | -----
 Skipper | DefaultSkipper
 
-## [Example]({{< ref "cookbook/reverse-proxy.md">}})
+## [Example](/cookbook/reverse-proxy)
