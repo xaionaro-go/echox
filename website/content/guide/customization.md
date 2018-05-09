@@ -14,6 +14,39 @@ to `DEBUG`.
 
 ## Logging
 
+The default format for logging is JSON, which can be changed by modifying the header.
+
+### Log Header
+
+`Echo#Logger.SetOutput(io.Writer)` can be used to set the header for
+the logger. Default value:
+
+```json
+{"time":"${time_rfc3339_nano}","level":"${level}","prefix":"${prefix}","file":"${short_file}","line":"${line}"}
+```
+
+*Example*
+
+```go
+if l, ok := e.Logger.(*log.Logger); ok {
+  l.SetHeader("${time_rfc3339} ${level}")
+}
+```
+
+```sh
+2018-05-08T20:30:06-07:00 INFO info
+```
+
+#### Available Tags
+
+- `time_rfc3339`
+- `time_rfc3339_nano`
+- `level`
+- `prefix`
+- `long_file`
+- `short_file`
+- `line`
+
 ### Log Output
 
 `Echo#Logger.SetOutput(io.Writer)` can be used to set the output destination for

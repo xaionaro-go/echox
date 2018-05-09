@@ -336,7 +336,7 @@ function is executed.
 
 ```go
 func(c echo.Context) error {
-  c.Response().After(func() {
+  c.Response().Before(func() {
     println("before response")
   })
   c.Response().After(func() {
