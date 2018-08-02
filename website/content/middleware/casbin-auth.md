@@ -49,9 +49,9 @@ e := echo.New()
 ce := casbin.NewEnforcer("casbin_auth_model.conf", "")
 ce.AddRoleForUser("alice", "admin")
 ce.AddPolicy(...)
-e.Use(casbin_mw.MiddlewareWithConfig(casbin_mw.Config(
+e.Use(casbin_mw.MiddlewareWithConfig(casbin_mw.Config{
   Enforcer: ce,
-)))
+}))
 ```
 
 ## Configuration
