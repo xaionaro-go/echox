@@ -4,7 +4,9 @@
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/labstack/echo)
 [![Go Report Card](https://goreportcard.com/badge/github.com/labstack/echo?style=flat-square)](https://goreportcard.com/report/github.com/labstack/echo)
 [![Build Status](http://img.shields.io/travis/labstack/echo.svg?style=flat-square)](https://travis-ci.org/labstack/echo)
-[![Codecov](https://img.shields.io/codecov/c/github/labstack/echo.svg?style=flat-square)](https://codecov.io/gh/labstack/echo) [![Forum](https://img.shields.io/badge/community-forum-00afd1.svg?style=flat-square)](https://forum.labstack.com)
+[![Codecov](https://img.shields.io/codecov/c/github/labstack/echo.svg?style=flat-square)](https://codecov.io/gh/labstack/echo) 
+[![Join the chat at https://gitter.im/labstack/echo](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat-square)](https://gitter.im/labstack/echo)
+[![Forum](https://img.shields.io/badge/community-forum-00afd1.svg?style=flat-square)](https://forum.labstack.com)
 [![Twitter](https://img.shields.io/badge/twitter-@labstack-55acee.svg?style=flat-square)](https://twitter.com/labstack)
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/labstack/echo/master/LICENSE)
 
@@ -24,9 +26,13 @@
 - Automatic TLS via Let’s Encrypt
 - HTTP/2 support
 
-## Performance
+## Benchmarks
 
-<img src="https://api.labstack.com/chart/bar?values=20015,39584,7282,11276&labels=Static,GitHub%20API,Parse%20API,Google%20Plus%20API&x_title=Route&y_title=Time%20(ns/op)&colors=c" width=500 height=400>
+Date: 2018/03/15<br>
+Source: https://github.com/vishr/web-framework-benchmark<br>
+Lower is better!
+
+<img src="https://api.labstack.com/chart/bar?values=37223,55382,2985,5265|42013,59865,3350,6424&labels=Static,GitHub%20API,Parse%20API,Gplus%20API&titles=Echo,Gin&colors=lightseagreen,goldenrod&x_title=Routes&y_title=ns/op">
 
 ## [Guide](https://echo.labstack.com/guide)
 
@@ -63,12 +69,10 @@ func hello(c echo.Context) error {
 }
 ```
 
-## Support Us
+## Help
 
-- :star: the project
-- [Donate](https://echo.labstack.com/support-echo)
-- :earth_americas: spread the word
-- [Contribute](#contribute) to the project
+- [Forum](https://forum.labstack.com)
+- [Chat](https://gitter.im/labstack/echo)
 
 ## Contribute
 

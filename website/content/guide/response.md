@@ -346,4 +346,4 @@ func(c echo.Context) error {
 }
 ```
 
-> It possible to register multiple before and after functions
+> It is possible to register multiple before and after functions
