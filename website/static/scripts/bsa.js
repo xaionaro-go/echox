@@ -78,12 +78,6 @@ var _native = (function () {
 })({})
 
 var _native_go = function (json) {
-  // Adjust margin
-  var height = document.querySelector('.native-flex').clientHeight;
-  document.querySelector('.sidenav2').style.bottom += height + 'px';
-  document.querySelector('.main').style.marginBottom += height + 'px';
-  document.querySelector('.ad').style.bottom += height + 'px';
-
   let options = _native.options()
   let ads = _native.sanitize(json['ads'])
   let selectedClass = document.querySelectorAll('.' + options['targetClass'])
@@ -134,5 +128,12 @@ var _native_go = function (json) {
       selectedTarget.innerHTML = null
       selectedTarget.style.display = 'none'
     }
+
+    // Adjust margin
+    var height = 60;
+    document.querySelector('.native-main').style.height = height + 'px';
+    document.querySelector('.sidenav2').style.bottom = height + 'px';
+    document.querySelector('.main').style.marginBottom = height + 'px';
+    document.querySelector('.ad').style.bottom = 8 + height + 'px';
   })
 }

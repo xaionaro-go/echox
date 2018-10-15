@@ -92,7 +92,7 @@ var (
 func TestCreateUser(t *testing.T) {
 	// Setup
 	e := echo.New()
-	req := httptest.NewRequest(echo.POST, "/", strings.NewReader(userJSON))
+	req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(userJSON))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
@@ -108,7 +108,7 @@ func TestCreateUser(t *testing.T) {
 func TestGetUser(t *testing.T) {
 	// Setup
 	e := echo.New()
-	req := httptest.NewRequest(echo.GET, "/", nil)
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	rec := httptest.NewRecorder()
 	c := e.NewContext(req, rec)
 	c.SetPath("/users/:email")
@@ -130,7 +130,7 @@ func TestGetUser(t *testing.T) {
 f := make(url.Values)
 f.Set("name", "Jon Snow")
 f.Set("email", "jon@labstack.com")
-req := httptest.NewRequest(echo.POST, "/", strings.NewReader(f.Encode()))
+req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(f.Encode()))
 req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationForm)
 ```
 
@@ -146,7 +146,7 @@ c.SetParamValues("1", "jon@labstack.com")
 ```go
 q := make(url.Values)
 q.Set("email", "jon@labstack.com")
-req := httptest.NewRequest(echo.POST, "/?"+q.Encode(), nil)
+req := httptest.NewRequest(http.MethodPost, "/?"+q.Encode(), nil)
 ```
 
 ## Testing Middleware

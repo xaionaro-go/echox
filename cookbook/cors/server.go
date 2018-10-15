@@ -29,7 +29,7 @@ func main() {
 	// wth GET, PUT, POST or DELETE method.
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{"https://labstack.com", "https://labstack.net"},
-		AllowMethods: []string{echo.GET, echo.PUT, echo.POST, echo.DELETE},
+		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
 	}))
 
 	e.GET("/api/users", getUsers)

@@ -72,6 +72,6 @@ CORSConfig struct {
 DefaultCORSConfig = CORSConfig{
   Skipper:      DefaultSkipper,
   AllowOrigins: []string{"*"},
-  AllowMethods: []string{echo.GET, echo.HEAD, echo.PUT, echo.PATCH, echo.POST, echo.DELETE},
+  AllowMethods: []string{http.MethodGet, http.MethodHead, http.MethodPut, http.MethodPatch, http.MethodPost, http.MethodDelete},
 }
 ```
