@@ -127,6 +127,7 @@ func TestGetUser(t *testing.T) {
 ### Using Form Payload
 
 ```go
+// import "net/url"
 f := make(url.Values)
 f.Set("name", "Jon Snow")
 f.Set("email", "jon@labstack.com")
@@ -144,6 +145,7 @@ c.SetParamValues("1", "jon@labstack.com")
 ### Setting Query Params
 
 ```go
+// import "net/url"
 q := make(url.Values)
 q.Set("email", "jon@labstack.com")
 req := httptest.NewRequest(http.MethodPost, "/?"+q.Encode(), nil)
