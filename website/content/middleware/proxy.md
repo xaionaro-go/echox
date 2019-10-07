@@ -9,7 +9,7 @@ description = "Reverse proxy middleware for Echo"
 Proxy provides an HTTP/WebSocket reverse proxy middleware. It forwards a request
 to upstream server using a configured load balancing technique.
 
-*Usage*
+_Usage_
 
 ```go
 url1, err := url.Parse("http://localhost:8081")
@@ -20,21 +20,19 @@ url2, err := url.Parse("http://localhost:8082")
 if err != nil {
   e.Logger.Fatal(err)
 }
-e.Use(middleware.Proxy(&middleware.RoundRobinBalancer{
-  Targets: []*middleware.ProxyTarget{
-    {
-      URL: url1,
-    },
-    {
-      URL: url2,
-    },
+e.Use(middleware.Proxy(middleware.NewRoundRobinBalancer([]*middleware.ProxyTarget{
+  {
+    URL: url1,
   },
-}))
+  {
+    URL: url2,
+  },
+})))
 ```
 
 ## Custom Configuration
 
-*Usage*
+_Usage_
 
 ```go
 e := echo.New()
@@ -58,10 +56,10 @@ ProxyConfig struct {
 }
 ```
 
-*Default Configuration*
+_Default Configuration_
 
-Name | Value
----- | -----
-Skipper | DefaultSkipper
+| Name    | Value          |
+| ------- | -------------- |
+| Skipper | DefaultSkipper |
 
 ## [Example](/cookbook/reverse-proxy)
