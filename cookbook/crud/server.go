@@ -57,6 +57,10 @@ func deleteUser(c echo.Context) error {
 	return c.NoContent(http.StatusNoContent)
 }
 
+func getAllUsers(c echo.Context) error {
+	return c.JSON(http.StatusOK, users)
+}
+
 func main() {
 	e := echo.New()
 
@@ -65,6 +69,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
+	e.GET("/users", getAllUsers)
 	e.POST("/users", createUser)
 	e.GET("/users/:id", getUser)
 	e.PUT("/users/:id", updateUser)
