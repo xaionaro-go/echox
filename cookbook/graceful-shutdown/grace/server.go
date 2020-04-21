@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/facebookgo/grace/gracehttp"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {

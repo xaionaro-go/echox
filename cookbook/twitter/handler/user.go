@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"github.com/labstack/echox/cookbook/twitter/model"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"

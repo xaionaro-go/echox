@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/echox/cookbook/twitter/handler"
 	"github.com/labstack/gommon/log"
 	"gopkg.in/mgo.v2"
