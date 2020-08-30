@@ -15,7 +15,7 @@ func main() {
 	e.Use(middleware.JWTWithConfig(middleware.JWTConfig{
 		SigningKey: []byte(handler.Key),
 		Skipper: func(c echo.Context) bool {
-			// Skip authentication for and signup login requests
+			// Skip authentication for signup and login requests
 			if c.Path() == "/login" || c.Path() == "/signup" {
 				return true
 			}
