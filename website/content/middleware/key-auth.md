@@ -28,6 +28,9 @@ e.Use(middleware.KeyAuth(func(key string, c echo.Context) (bool, error) {
 e := echo.New()
 e.Use(middleware.KeyAuthWithConfig(middleware.KeyAuthConfig{
   KeyLookup: "query:api-key",
+  Validator: func(key string, c echo.Context) (bool, error) {
+			return key == "valid-key", nil
+		},
 }))
 ```
 
