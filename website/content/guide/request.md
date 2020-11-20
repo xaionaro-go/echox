@@ -179,7 +179,7 @@ type (
 )
 
 func (cv *CustomValidator) Validate(i interface{}) error {
-	return cv.validator.Struct(i)
+	return echo.NewHTTPError(http.StatusInternalServerError, cv.validator.Struct(i).Error())
 }
 
 func main() {
