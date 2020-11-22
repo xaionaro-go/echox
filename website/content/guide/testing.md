@@ -148,7 +148,7 @@ c.SetParamValues("1", "jon@labstack.com")
 // import "net/url"
 q := make(url.Values)
 q.Set("email", "jon@labstack.com")
-req := httptest.NewRequest(http.MethodPost, "/?"+q.Encode(), nil)
+req := httptest.NewRequest(http.MethodGet, "/?"+q.Encode(), nil)
 ```
 
 ## Testing Middleware
