@@ -188,7 +188,7 @@ func main() {
 	e.POST("/users", func(c echo.Context) (err error) {
 		u := new(User)
 		if err = c.Bind(u); err != nil {
-			return
+			return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 		}
 		if err = c.Validate(u); err != nil {
 			return echo.NewHTTPError(http.StatusBadRequest, err.Error())
