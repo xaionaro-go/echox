@@ -64,7 +64,7 @@ CSRFConfig struct {
   ContextKey string `json:"context_key"`
 
   // Name of the CSRF cookie. This cookie will store CSRF token.
-  // Optional. Default value "csrf".
+  // Optional. Default value "_csrf".
   CookieName string `json:"cookie_name"`
 
   // Domain of the CSRF cookie.
