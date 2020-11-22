@@ -118,7 +118,7 @@ e.Logger.Fatal(e.StartH2CServer(":1323", s))
 ```go
 l, err := net.Listen("tcp", ":1323")
 if err != nil {
-  e.Logger.Fatal(l)
+  e.Logger.Fatal(err)
 }
 e.Listener = l
 e.Logger.Fatal(e.Start(""))
