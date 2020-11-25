@@ -7,14 +7,21 @@ description = "CORS recipe for Echo"
   parent = "cookbook"
 +++
 
-## Server
+## Server using a list of allowed origins
 
 `server.go`
 
-{{< embed "cors/server.go" >}}
+{{< embed "cors/origin-list/server.go" >}}
+
+## Server using a custom function to allow origins
+
+`server.go`
+
+{{< embed "cors/origin-func/server.go" >}}
 
 ## [Source Code]({{< source "cors" >}})
 
 ## Maintainers
 
 - [vishr](https://github.com/vishr)
+- [curvegrid](https://github.com/curvegrid)
