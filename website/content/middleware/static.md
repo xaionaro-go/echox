@@ -30,7 +30,20 @@ e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
 }))
 ```
 
-This serves static files from `static` directory and enables directory browsing.
+This serves static files from `static` directory and enables directory browsing. 
+
+Default behavior when using with non root URL paths is to append the URL path to the filesystem path. 
+
+Example:
+
+```go
+group := root.Group("somepath")
+group.Use(middleware.Static(filepath.Join("filesystempath")))
+// When an incoming request comes for `/somepath` the actual filesystem request goes to `filesystempath/somepath` instead of only `filesystempath`. 
+```
+
+To turn off this behavior set the `IgnoreBase` config param to `true`.
+
 
 ## Configuration
 
@@ -55,6 +68,12 @@ StaticConfig struct {
   // Enable directory browsing.
   // Optional. Default value false.
   Browse bool `json:"browse"`
+  
+  // Enable ignoring of the base of the URL path.
+  // Example: when assigning a static middleware to a non root path group,
+  // the filesystem path is not doubled
+  // Optional. Default value false.
+  IgnoreBase bool `yaml:"ignoreBase"`
 }
 ```
 
