@@ -21,6 +21,8 @@ description = "Casbin Auth middleware for Echo. It supports access control model
 
 > Echo community contribution
 
+Note: Currently, only HTTP basic authentication is supported.
+
 ## Dependencies
 
 ```go
