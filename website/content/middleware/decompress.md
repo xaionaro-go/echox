@@ -7,6 +7,7 @@ description = "Decompress middleware for Echo"
 +++
 
 Decompress middleware decompresses HTTP request if Content-Encoding header is set to gzip.
+*Please note: The body will be decompressed in memory and consume it for the lifetime of the request (and garbage collection). 
 
 *Usage*
 
