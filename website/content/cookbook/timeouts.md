@@ -1,0 +1,17 @@
++++
+title = "Timeouts Recipe"
+description = "Timeout recipe for Echo"
+[menu.main]
+  name = "Timeouts"
+  parent = "cookbook"
++++
+
+`server.go`
+
+{{< embed "timeouts/server.go" >}}
+
+## [Source Code]({{< source "timeouts" >}})
+
+## Maintainers
+
+- [ilijamt](https://github.com/ilijamt)
