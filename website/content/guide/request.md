@@ -8,9 +8,46 @@ description = "Handling HTTP request in Echo"
 
 ## Bind Data
 
-To bind request body into a Go type use `Context#Bind(i interface{})`.
+Echo provides following method to bind data from different sources (path params, query params, request body) to structure 
+`Context#Bind(i interface{})` method.
 The default binder supports decoding application/json, application/xml and
 application/x-www-form-urlencoded data based on the Content-Type header.
+
+Request data is binded to the struct in given order:
+
+1. Path parameters
+2. Query parameters
+3. Request body
+
+Notes:
+
+* Each step can overwrite binded fields from the previous step. This means if your json request has query param
+  `&name=query` and body is `{"name": "body"}` then the result will be `User{Name: "body"}`.
+* To avoid security flaws try to avoid passing binded structs directly to other methods if
+  these structs contain fields that should not be bindable. It is advisable to have separate struct for binding and map it
+  explicitly to your business struct. Consider what will happen if your binded struct has public
+  field `IsAdmin bool` and request body would contain `{IsAdmin: true, Name: "hacker"}`.
+* When binding forms take note that Echo implementation uses standard library form parsing which parses form data 
+  from BOTH URL and BODY if content type is not MIMEMultipartForm. See documentation for [non-MIMEMultipartForm](https://golang.org/pkg/net/http/#Request.ParseForm)
+  and [MIMEMultipartForm](https://golang.org/pkg/net/http/#Request.ParseMultipartForm)
+* To bind data only from request body use following code
+  ```go
+  if err := (&DefaultBinder{}).BindBody(c, &payload); err != nil {
+    return err
+  }
+  ```
+* To bind data only from query parameters use following code
+  ```go
+  if err := (&DefaultBinder{}).BindQueryParams(c, &payload); err != nil {
+    return err
+  }
+  ```
+* To bind data only from path parameters use following code
+  ```go
+  if err := (&DefaultBinder{}).BindPathParams(c, &payload); err != nil {
+    return err
+  }
+  ```
 
 Example below binds the request payload into `User` struct based on tags:
 
@@ -29,6 +66,15 @@ func(c echo.Context) (err error) {
   if err = c.Bind(u); err != nil {
     return
   }
+  // To avoid security flaws try to avoid passing binded structs directly to other methods 
+  // if these structs contain fields that should not be bindable. 
+  user := UserDTO{
+  	Name: u.Name,
+  	Email: u.Email,
+  	IsAdmin: false // because you could accidentally expose fields that should not be bind
+  }
+  executeSomeBusinessLogic(user)
+  
   return c.JSON(http.StatusOK, u)
 }
 ```
