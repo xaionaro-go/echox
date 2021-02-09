@@ -9,7 +9,7 @@ description = "Reverse proxy middleware for Echo"
 Proxy provides an HTTP/WebSocket reverse proxy middleware. It forwards a request
 to upstream server using a configured load balancing technique.
 
-_Usage_
+### Usage
 
 ```go
 url1, err := url.Parse("http://localhost:8081")
@@ -32,34 +32,70 @@ e.Use(middleware.Proxy(middleware.NewRoundRobinBalancer([]*middleware.ProxyTarge
 
 ## Custom Configuration
 
-_Usage_
+### Usage
 
 ```go
 e := echo.New()
 e.Use(middleware.ProxyWithConfig(middleware.ProxyConfig{}))
 ```
 
-## Configuration
+### Configuration
 
 ```go
 // ProxyConfig defines the config for Proxy middleware.
-ProxyConfig struct {
-  // Skipper defines a function to skip middleware.
-  Skipper Skipper
+  ProxyConfig struct {
+    // Skipper defines a function to skip middleware.
+    Skipper Skipper
 
-  // Balancer defines a load balancing technique.
-  // Required.
-  // Possible values:
-  // - RandomBalancer
-  // - RoundRobinBalancer
-  Balancer ProxyBalancer
-}
+    // Balancer defines a load balancing technique.
+    // Required.
+    Balancer ProxyBalancer
+
+    // Rewrite defines URL path rewrite rules. The values captured in asterisk can be
+    // retrieved by index e.g. $1, $2 and so on.
+    Rewrite map[string]string
+
+    // RegexRewrite defines rewrite rules using regexp.Rexexp with captures
+    // Every capture group in the values can be retrieved by index e.g. $1, $2 and so on.
+    RegexRewrite map[*regexp.Regexp]string
+
+    // Context key to store selected ProxyTarget into context.
+    // Optional. Default value "target".
+    ContextKey string
+
+    // To customize the transport to remote.
+    // Examples: If custom TLS certificates are required.
+    Transport http.RoundTripper
+
+    // ModifyResponse defines function to modify response from ProxyTarget.
+    ModifyResponse func(*http.Response) error
 ```
 
-_Default Configuration_
+Default Configuration:
 
-| Name    | Value          |
-| ------- | -------------- |
-| Skipper | DefaultSkipper |
+| Name       | Value          |
+| ---------- | -------------- |
+| Skipper    | DefaultSkipper |
+| ContextKey | `target`       |
+
+### Regex-based Rules
+
+For advanced rewriting of proxy requests rules may also be defined using
+regular expression. Normal capture groups can be defined using `()` and referenced by index (`$1`, `$2`, ...) for the rewritten path.
+
+`RegexRules` and normal `Rules` can be combined.
+
+```go
+  e.Use(ProxyWithConfig(ProxyConfig{
+    Balancer: rrb,
+    Rewrite: map[string]string{
+      "^/v1/*":     "/v2/$1",
+    },
+    RegexRewrite: map[*regexp.Regexp]string{
+      regexp.MustCompile("^/foo/([0-9].*)"):  "/num/$1",
+      regexp.MustCompile("^/bar/(.+?)/(.*)"): "/baz/$2/$1",
+    },
+  }))
+```
 
 ## [Example](/cookbook/reverse-proxy)
