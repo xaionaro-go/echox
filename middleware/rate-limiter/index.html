@@ -680,7 +680,7 @@ The example below will limit the application to 20 requests/sec using the defaul
     <span style="color:#a6e22e">ErrorHandler</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">context</span> <span style="color:#a6e22e">echo</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>) <span style="color:#66d9ef">error</span> {
         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusTooManyRequests</span>, <span style="color:#66d9ef">nil</span>)
     },
-    <span style="color:#a6e22e">DenyHandler</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">context</span> <span style="color:#a6e22e">echo</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">identifier</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">error</span> {
+    <span style="color:#a6e22e">DenyHandler</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">context</span> <span style="color:#a6e22e">echo</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">identifier</span> <span style="color:#66d9ef">string</span>,<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>) <span style="color:#66d9ef">error</span> {
         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">JSON</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusForbidden</span>, <span style="color:#66d9ef">nil</span>)
     },
 }
