@@ -1,0 +1,32 @@
+name: publish to gh-pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.16"
+
+      - name: Install Hugo
+        run: go get github.com/gohugoio/hugo
+
+      - name: Build static pages
+        run: |
+          export BASE_URL=https://$(echo $GITHUB_REPOSITORY | cut -f1 -d"/").github.io/echox/
+          cd website
+          hugo -D --baseURL $BASE_URL
+
+      - name: Publish to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/public

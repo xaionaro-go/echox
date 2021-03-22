@@ -4,14 +4,14 @@
   <div class="w3-content">
     {{ partial "sidenav.html" . }}
     <div class="main">
-      {{ partial "ad.html" }}
+      {{ partial "ad.html" . }}
       <div class="w3-row-padding">
         <div class="w3-col s12 m10 l10">
           {{ partial "notice.html" }}
           <article class="content">
             <section>
               {{ $url := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
-              {{ $.Scratch.Add "path" .Site.BaseURL }}
+              {{ $.Scratch.Add "path" (printf "%s" .Site.BaseURL) }}
               <ul class="breadcrumb">
                 <!-- <li><a href="/">home</a></li> -->
                 {{ range $index, $element := split $url "/" }}
