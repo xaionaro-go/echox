@@ -1,37 +1,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Echo - High performance, minimalist Go web framework</title>
-    <link>https://labstack.github.io/echox</link>
+    <link>https://echo.labstack.com</link>
     <description>Recent content on Echo - High performance, minimalist Go web framework</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://labstack.github.io/echox" rel="self" type="application/rss+xml" />
+    <atom:link href="https://echo.labstack.com" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Cookbook | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/cookbook</link>
+      <link>https://echo.labstack.com/cookbook</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/cookbook</guid>
+      <guid>https://echo.labstack.com/cookbook</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 </description>
     </item>
     
     <item>
       <title>Cookbooks | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/cookbook</link>
+      <link>https://echo.labstack.com/cookbook</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/cookbook</guid>
+      <guid>https://echo.labstack.com/cookbook</guid>
       <description></description>
     </item>
     
     <item>
       <title>Guide | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/guide</link>
+      <link>https://echo.labstack.com/guide</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/guide</guid>
+      <guid>https://echo.labstack.com/guide</guid>
       <description>&lt;h2 id=&#34;quick-start&#34;&gt;Quick Start&lt;/h2&gt;
 &lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install Echo Go v1.13 or higher is required. Go v1.12 has limited support and some middlewares will not be available.
@@ -195,8 +195,8 @@ request header.&lt;/li&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;static-content&#34;&gt;Static Content&lt;/h3&gt;
 &lt;p&gt;Serve any file from static directory for path &lt;code&gt;/static/*&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Static&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/static&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;static&amp;#34;&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;learn-moreguidestatic-files&#34;&gt;&lt;a href=&#34;https://labstack.github.io/echox/guide/static-files&#34;&gt;Learn More&lt;/a&gt;&lt;/h4&gt;
-&lt;h3 id=&#34;template-renderingguidetemplates&#34;&gt;&lt;a href=&#34;https://labstack.github.io/echox/guide/templates&#34;&gt;Template Rendering&lt;/a&gt;&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;learn-moreguidestatic-files&#34;&gt;&lt;a href=&#34;https://echo.labstack.com/guide/static-files&#34;&gt;Learn More&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id=&#34;template-renderingguidetemplates&#34;&gt;&lt;a href=&#34;https://echo.labstack.com/guide/templates&#34;&gt;Template Rendering&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;middleware&#34;&gt;Middleware&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Root level middleware
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Use&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;middleware&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Logger&lt;/span&gt;())
@@ -221,25 +221,25 @@ request header.&lt;/li&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;e&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;GET&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/users&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;echo&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Context&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt; {
 	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;c&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;String&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;http&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;StatusOK&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/users&amp;#34;&lt;/span&gt;)
 }, &lt;span style=&#34;color:#a6e22e&#34;&gt;track&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;learn-moremiddleware&#34;&gt;&lt;a href=&#34;https://labstack.github.io/echox/middleware&#34;&gt;Learn More&lt;/a&gt;&lt;/h4&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;learn-moremiddleware&#34;&gt;&lt;a href=&#34;https://echo.labstack.com/middleware&#34;&gt;Learn More&lt;/a&gt;&lt;/h4&gt;
 </description>
     </item>
     
     <item>
       <title>Guides | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/guide</link>
+      <link>https://echo.labstack.com/guide</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/guide</guid>
+      <guid>https://echo.labstack.com/guide</guid>
       <description></description>
     </item>
     
     <item>
       <title>Middleware | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/middleware</link>
+      <link>https://echo.labstack.com/middleware</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/middleware</guid>
+      <guid>https://echo.labstack.com/middleware</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;Middleware is a function chained in the HTTP request-response cycle with access
 to &lt;code&gt;Echo#Context&lt;/code&gt; which it uses to perform a specific action, for example, logging
@@ -311,25 +311,25 @@ for that each middleware has an option to define a function &lt;code&gt;Skipper 
 	},
 }))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example above skips Logger middleware when request host starts with localhost.&lt;/p&gt;
-&lt;h2 id=&#34;writing-custom-middlewarehahahugoshortcode-s0-hbhb&#34;&gt;&lt;a href=&#34;https://labstack.github.io/echox/cookbook/middleware/&#34;&gt;Writing Custom Middleware&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;writing-custom-middlewarehahahugoshortcode-s0-hbhb&#34;&gt;&lt;a href=&#34;https://echo.labstack.com/cookbook/middleware/&#34;&gt;Writing Custom Middleware&lt;/a&gt;&lt;/h2&gt;
 </description>
     </item>
     
     <item>
       <title>Middlewares | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/middleware</link>
+      <link>https://echo.labstack.com/middleware</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/middleware</guid>
+      <guid>https://echo.labstack.com/middleware</guid>
       <description></description>
     </item>
     
     <item>
       <title>Support Echo | Echo - High performance, minimalist Go web framework</title>
-      <link>https://labstack.github.io/echox/support-echo</link>
+      <link>https://echo.labstack.com/support-echo</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://labstack.github.io/echox/support-echo</guid>
+      <guid>https://echo.labstack.com/support-echo</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;Echo is an MIT licensed open source project and completely free to use. If you are
