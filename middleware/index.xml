@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Middlewares on Echo - High performance, minimalist Go web framework</title>
-    <link>https://echo.labstack.com/middleware/</link>
+    <link>https://labstack.github.io/echox/middleware/</link>
     <description>Recent content in Middlewares on Echo - High performance, minimalist Go web framework</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://echo.labstack.com/middleware/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://labstack.github.io/echox/middleware/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Basic Auth Middleware</title>
-      <link>https://echo.labstack.com/middleware/basic-auth/</link>
+      <link>https://labstack.github.io/echox/middleware/basic-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/basic-auth/</guid>
+      <guid>https://labstack.github.io/echox/middleware/basic-auth/</guid>
       <description>Basic auth middleware provides an HTTP basic authentication.
  For valid credentials it calls the next handler. For missing or invalid credentials, it sends &amp;ldquo;401 - Unauthorized&amp;rdquo; response.  Usage
 e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) { // Be careful to use constant time comparison to prevent timing attacks 	if subtle.ConstantTimeCompare([]byte(username), []byte(&amp;#34;joe&amp;#34;)) == 1 &amp;amp;&amp;amp; subtle.ConstantTimeCompare([]byte(password), []byte(&amp;#34;secret&amp;#34;)) == 1 { return true, nil } return false, nil })) Custom Configuration Usage</description>
@@ -19,10 +19,10 @@ e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool
     
     <item>
       <title>Body Dump Middleware</title>
-      <link>https://echo.labstack.com/middleware/body-dump/</link>
+      <link>https://labstack.github.io/echox/middleware/body-dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/body-dump/</guid>
+      <guid>https://labstack.github.io/echox/middleware/body-dump/</guid>
       <description>Body dump middleware captures the request and response payload and calls the registered handler. Generally used for debugging/logging purpose. Avoid using it if your request/response payload is huge e.g. file upload/download, but if you still need to, add an exception for your endpoints in the skipper function.
 Usage
 e := echo.New() e.Use(middleware.BodyDump(func(c echo.Context, reqBody, resBody []byte) { })) Custom Configuration Usage
@@ -31,30 +31,30 @@ e := echo.New() e.Use(middleware.BodyDumpWithConfig(middleware.BodyDumpConfig{})
     
     <item>
       <title>Body Limit Middleware</title>
-      <link>https://echo.labstack.com/middleware/body-limit/</link>
+      <link>https://labstack.github.io/echox/middleware/body-limit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/body-limit/</guid>
+      <guid>https://labstack.github.io/echox/middleware/body-limit/</guid>
       <description>Body limit middleware sets the maximum allowed size for a request body, if the size exceeds the configured limit, it sends &amp;ldquo;413 - Request Entity Too Large&amp;rdquo; response. The body limit is determined based on both Content-Length request header and actual content read, which makes it super secure.
 Limit can be specified as 4x or 4xB, where x is one of the multiple from K, M, G, T or P.</description>
     </item>
     
     <item>
       <title>Casbin Auth Middleware</title>
-      <link>https://echo.labstack.com/middleware/casbin-auth/</link>
+      <link>https://labstack.github.io/echox/middleware/casbin-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/casbin-auth/</guid>
+      <guid>https://labstack.github.io/echox/middleware/casbin-auth/</guid>
       <description>Casbin is a powerful and efficient open-source access control library for Go. It provides support for enforcing authorization based on various models. So far, the access control models supported by Casbin are:
  ACL (Access Control List) ACL with superuser ACL without users: especially useful for systems that don&amp;rsquo;t have authentication or user log-ins. ACL without resources: some scenarios may target for a type of resources instead of an individual resource by using permissions like write-article, read-log.</description>
     </item>
     
     <item>
       <title>CORS Middleware</title>
-      <link>https://echo.labstack.com/middleware/cors/</link>
+      <link>https://labstack.github.io/echox/middleware/cors/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/cors/</guid>
+      <guid>https://labstack.github.io/echox/middleware/cors/</guid>
       <description>CORS middleware implements CORS specification. CORS gives web servers cross-domain access controls, which enable secure cross-domain data transfers.
 Usage
 e.Use(middleware.CORS())
@@ -64,10 +64,10 @@ e := echo.New() e.Use(middleware.CORSWithConfig(middleware.CORSConfig{ AllowOrig
     
     <item>
       <title>CSRF Middleware</title>
-      <link>https://echo.labstack.com/middleware/csrf/</link>
+      <link>https://labstack.github.io/echox/middleware/csrf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/csrf/</guid>
+      <guid>https://labstack.github.io/echox/middleware/csrf/</guid>
       <description>Cross-site request forgery, also known as one-click attack or session riding and abbreviated as CSRF (sometimes pronounced sea-surf) or XSRF, is a type of malicious exploit of a website where unauthorized commands are transmitted from a user that the website trusts.
 Usage
 e.Use(middleware.CSRF())
@@ -78,10 +78,10 @@ Accessing CSRF Token Server-side CSRF token can be accessed from Echo#Context us
     
     <item>
       <title>Decompress Middleware</title>
-      <link>https://echo.labstack.com/middleware/decompress/</link>
+      <link>https://labstack.github.io/echox/middleware/decompress/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/decompress/</guid>
+      <guid>https://labstack.github.io/echox/middleware/decompress/</guid>
       <description>Decompress middleware decompresses HTTP request if Content-Encoding header is set to gzip. *Please note: The body will be decompressed in memory and consume it for the lifetime of the request (and garbage collection).
 Usage
 e.Use(middleware.Decompress())
@@ -92,10 +92,10 @@ DefaultDecompressConfig = DecompressConfig{ Skipper: DefaultSkipper, } </descrip
     
     <item>
       <title>Gzip Middleware</title>
-      <link>https://echo.labstack.com/middleware/gzip/</link>
+      <link>https://labstack.github.io/echox/middleware/gzip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/gzip/</guid>
+      <guid>https://labstack.github.io/echox/middleware/gzip/</guid>
       <description>Gzip middleware compresses HTTP response using gzip compression scheme.
 Usage
 e.Use(middleware.Gzip())
@@ -106,10 +106,10 @@ DefaultGzipConfig = GzipConfig{ Skipper: DefaultSkipper, Level: -1, } </descript
     
     <item>
       <title>Jaeger Tracing Middleware</title>
-      <link>https://echo.labstack.com/middleware/jaegertracing/</link>
+      <link>https://labstack.github.io/echox/middleware/jaegertracing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/jaegertracing/</guid>
+      <guid>https://labstack.github.io/echox/middleware/jaegertracing/</guid>
       <description>Trace requests on Echo framework with Jaeger Tracing Middleware.
 Usage
 package main import ( &amp;#34;github.com/labstack/echo-contrib/jaegertracing&amp;#34; &amp;#34;github.com/labstack/echo/v4&amp;#34; ) func main() { e := echo.New() // Enable tracing middleware  c := jaegertracing.New(e, nil) defer c.Close() e.Logger.Fatal(e.Start(&amp;#34;:1323&amp;#34;)) } Enabling the tracing middleware creates a tracer and a root tracing span for every request.
@@ -118,10 +118,10 @@ Custom Configuration By default, traces are sent to localhost Jaeger agent insta
     
     <item>
       <title>JWT Middleware</title>
-      <link>https://echo.labstack.com/middleware/jwt/</link>
+      <link>https://labstack.github.io/echox/middleware/jwt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/jwt/</guid>
+      <guid>https://labstack.github.io/echox/middleware/jwt/</guid>
       <description>JWT provides a JSON Web Token (JWT) authentication middleware.
  For valid token, it sets the user in context and calls next handler. For invalid token, it sends &amp;ldquo;401 - Unauthorized&amp;rdquo; response. For missing or invalid Authorization header, it sends &amp;ldquo;400 - Bad Request&amp;rdquo;.  Usage
 e.Use(middleware.JWT([]byte(&amp;quot;secret&amp;quot;)))
@@ -131,10 +131,10 @@ e.Use(middleware.JWTWithConfig(middleware.JWTConfig{ SigningKey: []byte(&amp;#34
     
     <item>
       <title>Key Auth Middleware</title>
-      <link>https://echo.labstack.com/middleware/key-auth/</link>
+      <link>https://labstack.github.io/echox/middleware/key-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/key-auth/</guid>
+      <guid>https://labstack.github.io/echox/middleware/key-auth/</guid>
       <description>Key auth middleware provides a key based authentication.
  For valid key it calls the next handler. For invalid key, it sends &amp;ldquo;401 - Unauthorized&amp;rdquo; response. For missing key, it sends &amp;ldquo;400 - Bad Request&amp;rdquo; response.  Usage
 e.Use(middleware.KeyAuth(func(key string, c echo.Context) (bool, error) { return key == &amp;#34;valid-key&amp;#34;, nil })) Custom Configuration Usage
@@ -143,10 +143,10 @@ e := echo.New() e.Use(middleware.KeyAuthWithConfig(middleware.KeyAuthConfig{ Key
     
     <item>
       <title>Logger Middleware</title>
-      <link>https://echo.labstack.com/middleware/logger/</link>
+      <link>https://labstack.github.io/echox/middleware/logger/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/logger/</guid>
+      <guid>https://labstack.github.io/echox/middleware/logger/</guid>
       <description>Logger middleware logs the information about each HTTP request.
 Usage
 e.Use(middleware.Logger())
@@ -159,10 +159,10 @@ method=GET, uri=/, status=200 Configuration LoggerConfig struct { // Skipper def
     
     <item>
       <title>Method Override Middleware</title>
-      <link>https://echo.labstack.com/middleware/method-override/</link>
+      <link>https://labstack.github.io/echox/middleware/method-override/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/method-override/</guid>
+      <guid>https://labstack.github.io/echox/middleware/method-override/</guid>
       <description>Method override middleware checks for the overridden method from the request and uses it instead of the original method.
 For security reasons, only POST method can be overridden.
 Usage
@@ -173,10 +173,10 @@ e := echo.New() e.Pre(middleware.MethodOverrideWithConfig(middleware.MethodOverr
     
     <item>
       <title>Prometheus Middleware</title>
-      <link>https://echo.labstack.com/middleware/prometheus/</link>
+      <link>https://labstack.github.io/echox/middleware/prometheus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/prometheus/</guid>
+      <guid>https://labstack.github.io/echox/middleware/prometheus/</guid>
       <description>Prometheus middleware generates metrics for HTTP requests.
 Usage
 package main import ( &amp;#34;github.com/labstack/echo/v4&amp;#34; &amp;#34;github.com/labstack/echo-contrib/prometheus&amp;#34; ) func main() { e := echo.New() // Enable metrics middleware  p := prometheus.NewPrometheus(&amp;#34;echo&amp;#34;, nil) p.Use(e) e.Logger.Fatal(e.Start(&amp;#34;:1323&amp;#34;)) } Sample Output
@@ -185,20 +185,20 @@ curl http://localhost:1323/metrics # HELP echo_request_duration_seconds The HTTP
     
     <item>
       <title>Proxy Middleware</title>
-      <link>https://echo.labstack.com/middleware/proxy/</link>
+      <link>https://labstack.github.io/echox/middleware/proxy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/proxy/</guid>
+      <guid>https://labstack.github.io/echox/middleware/proxy/</guid>
       <description>Proxy provides an HTTP/WebSocket reverse proxy middleware. It forwards a request to upstream server using a configured load balancing technique.
 Usage url1, err := url.Parse(&amp;#34;http://localhost:8081&amp;#34;) if err != nil { e.Logger.Fatal(err) } url2, err := url.Parse(&amp;#34;http://localhost:8082&amp;#34;) if err != nil { e.Logger.Fatal(err) } e.Use(middleware.Proxy(middleware.NewRoundRobinBalancer([]*middleware.ProxyTarget{ { URL: url1, }, { URL: url2, }, }))) Custom Configuration Usage e := echo.New() e.Use(middleware.ProxyWithConfig(middleware.ProxyConfig{})) Configuration // ProxyConfig defines the config for Proxy middleware.  ProxyConfig struct { // Skipper defines a function to skip middleware.</description>
     </item>
     
     <item>
       <title>Rate Limiter Middleware</title>
-      <link>https://echo.labstack.com/middleware/rate-limiter/</link>
+      <link>https://labstack.github.io/echox/middleware/rate-limiter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/rate-limiter/</guid>
+      <guid>https://labstack.github.io/echox/middleware/rate-limiter/</guid>
       <description>RateLimiter provides a Rate Limiter middleware for limiting the amount of requests to the server from a particular IP or id within a time period.
 By default an in-memory store is used for keeping track of requests. The default in-memory implementation is focused on correctness and may not be the best option for a high number of concurrent requests or a large number of different identifiers (&amp;gt;16k).
 Usage To add a rate limit to your application simply add the RateLimiter middlware.</description>
@@ -206,10 +206,10 @@ Usage To add a rate limit to your application simply add the RateLimiter middlwa
     
     <item>
       <title>Recover Middleware</title>
-      <link>https://echo.labstack.com/middleware/recover/</link>
+      <link>https://labstack.github.io/echox/middleware/recover/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/recover/</guid>
+      <guid>https://labstack.github.io/echox/middleware/recover/</guid>
       <description>Recover middleware recovers from panics anywhere in the chain, prints stack trace and handles the control to the centralized HTTPErrorHandler.
 Usage
 e.Use(middleware.Recover())
@@ -220,10 +220,10 @@ Configuration RecoverConfig struct { // Skipper defines a function to skip middl
     
     <item>
       <title>Redirect Middleware</title>
-      <link>https://echo.labstack.com/middleware/redirect/</link>
+      <link>https://labstack.github.io/echox/middleware/redirect/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/redirect/</guid>
+      <guid>https://labstack.github.io/echox/middleware/redirect/</guid>
       <description>HTTPS Redirect HTTPS redirect middleware redirects http requests to https. For example, http://labstack.com will be redirected to https://labstack.com.
 Usage
 e := echo.New() e.Pre(middleware.HTTPSRedirect()) HTTPS WWW Redirect HTTPS WWW redirect redirects http requests to www https. For example, http://labstack.com will be redirected to https://www.labstack.com.
@@ -234,10 +234,10 @@ Usage</description>
     
     <item>
       <title>Request ID Middleware</title>
-      <link>https://echo.labstack.com/middleware/request-id/</link>
+      <link>https://labstack.github.io/echox/middleware/request-id/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/request-id/</guid>
+      <guid>https://labstack.github.io/echox/middleware/request-id/</guid>
       <description>Request ID middleware generates a unique id for a request.
 Usage
 e.Use(middleware.RequestID())
@@ -248,20 +248,20 @@ DefaultRequestIDConfig = RequestIDConfig{ Skipper: DefaultSkipper, Generator: ge
     
     <item>
       <title>Rewrite Middleware</title>
-      <link>https://echo.labstack.com/middleware/rewrite/</link>
+      <link>https://labstack.github.io/echox/middleware/rewrite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/rewrite/</guid>
+      <guid>https://labstack.github.io/echox/middleware/rewrite/</guid>
       <description>Rewrite middleware allows to rewrite an URL path based on provided rules. It can be helpful for backward compatibility or just creating cleaner and more descriptive links.
 Usage e.Pre(middleware.Rewrite(map[string]string{ &amp;#34;/old&amp;#34;: &amp;#34;/new&amp;#34;, &amp;#34;/api/*&amp;#34;: &amp;#34;/$1&amp;#34;, &amp;#34;/js/*&amp;#34;: &amp;#34;/public/javascripts/$1&amp;#34;, &amp;#34;/users/*/orders/*&amp;#34;: &amp;#34;/user/$1/order/$2&amp;#34;, })) The values captured in asterisk can be retrieved by index e.g. $1, $2 and so on. Each asterisk will be non-greedy (translated to a capture group (.*?)) and if using multiple asterisk a trailing * will match the &amp;ldquo;rest&amp;rdquo; of the path.</description>
     </item>
     
     <item>
       <title>Secure Middleware</title>
-      <link>https://echo.labstack.com/middleware/secure/</link>
+      <link>https://labstack.github.io/echox/middleware/secure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/secure/</guid>
+      <guid>https://labstack.github.io/echox/middleware/secure/</guid>
       <description>Secure middleware provides protection against cross-site scripting (XSS) attack, content type sniffing, clickjacking, insecure connection and other code injection attacks.
 Usage
 e.Use(middleware.Secure())
@@ -272,10 +272,10 @@ Configuration SecureConfig struct { // Skipper defines a function to skip middle
     
     <item>
       <title>Session Middleware</title>
-      <link>https://echo.labstack.com/middleware/session/</link>
+      <link>https://labstack.github.io/echox/middleware/session/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/session/</guid>
+      <guid>https://labstack.github.io/echox/middleware/session/</guid>
       <description>Session middleware facilitates HTTP session management backed by gorilla sessions. The default implementation provides cookie and filesystem based session store; however, you can take advantage of community maintained implementation for various backends.
  Echo community contribution
  Dependencies import ( &amp;#34;github.com/gorilla/sessions&amp;#34; &amp;#34;github.com/labstack/echo-contrib/session&amp;#34; ) Usage
@@ -284,10 +284,10 @@ e := echo.New() e.Use(session.Middleware(sessions.NewCookieStore([]byte(&amp;#34
     
     <item>
       <title>Static Middleware</title>
-      <link>https://echo.labstack.com/middleware/static/</link>
+      <link>https://labstack.github.io/echox/middleware/static/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/static/</guid>
+      <guid>https://labstack.github.io/echox/middleware/static/</guid>
       <description>Static middleware can be used to serve static files from the provided root directory.
 Usage
 e := echo.New() e.Use(middleware.Static(&amp;#34;/static&amp;#34;)) This serves static files from static directory. For example, a request to /js/main.js will fetch and serve static/js/main.js file.
@@ -298,10 +298,10 @@ Default behavior when using with non root URL paths is to append the URL path to
     
     <item>
       <title>Timeout Middleware</title>
-      <link>https://echo.labstack.com/middleware/timeout/</link>
+      <link>https://labstack.github.io/echox/middleware/timeout/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/timeout/</guid>
+      <guid>https://labstack.github.io/echox/middleware/timeout/</guid>
       <description>Timeout middleware is used to timeout at a long running operation within a predefined period.
 Usage
 e.Use(middleware.Timeout())
@@ -311,10 +311,10 @@ e := echo.New() e.Use(middleware.TimeoutWithConfig(middleware.TimeoutConfig{ Ski
     
     <item>
       <title>Trailing Slash Middleware</title>
-      <link>https://echo.labstack.com/middleware/trailing-slash/</link>
+      <link>https://labstack.github.io/echox/middleware/trailing-slash/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://echo.labstack.com/middleware/trailing-slash/</guid>
+      <guid>https://labstack.github.io/echox/middleware/trailing-slash/</guid>
       <description>Add Trailing Slash Add trailing slash middleware adds a trailing slash to the request URI.
 Usage
 e := echo.New() e.Pre(middleware.AddTrailingSlash()) Remove Trailing Slash Remove trailing slash middleware removes a trailing slash from the request URI.

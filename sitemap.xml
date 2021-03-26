@@ -1,283 +1,283 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/auto-tls</loc>
+    <loc>https://labstack.github.io/echox/cookbook/auto-tls</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/basic-auth</loc>
+    <loc>https://labstack.github.io/echox/middleware/basic-auth</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/binding</loc>
+    <loc>https://labstack.github.io/echox/guide/binding</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/body-dump</loc>
+    <loc>https://labstack.github.io/echox/middleware/body-dump</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/body-limit</loc>
+    <loc>https://labstack.github.io/echox/middleware/body-limit</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/casbin-auth</loc>
+    <loc>https://labstack.github.io/echox/middleware/casbin-auth</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/categories</loc>
+    <loc>https://labstack.github.io/echox/categories</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/context</loc>
+    <loc>https://labstack.github.io/echox/guide/context</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook</loc>
+    <loc>https://labstack.github.io/echox/cookbook</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook</loc>
+    <loc>https://labstack.github.io/echox/cookbook</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/cookies</loc>
+    <loc>https://labstack.github.io/echox/guide/cookies</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/cors</loc>
+    <loc>https://labstack.github.io/echox/middleware/cors</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/cors</loc>
+    <loc>https://labstack.github.io/echox/cookbook/cors</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/crud</loc>
+    <loc>https://labstack.github.io/echox/cookbook/crud</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/csrf</loc>
+    <loc>https://labstack.github.io/echox/middleware/csrf</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/customization</loc>
+    <loc>https://labstack.github.io/echox/guide/customization</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/decompress</loc>
+    <loc>https://labstack.github.io/echox/middleware/decompress</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com</loc>
+    <loc>https://labstack.github.io/echox</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/embed-resources</loc>
+    <loc>https://labstack.github.io/echox/cookbook/embed-resources</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/error-handling</loc>
+    <loc>https://labstack.github.io/echox/guide/error-handling</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/file-download</loc>
+    <loc>https://labstack.github.io/echox/cookbook/file-download</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/file-upload</loc>
+    <loc>https://labstack.github.io/echox/cookbook/file-upload</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/google-app-engine</loc>
+    <loc>https://labstack.github.io/echox/cookbook/google-app-engine</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/graceful-shutdown</loc>
+    <loc>https://labstack.github.io/echox/cookbook/graceful-shutdown</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide</loc>
+    <loc>https://labstack.github.io/echox/guide</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide</loc>
+    <loc>https://labstack.github.io/echox/guide</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/gzip</loc>
+    <loc>https://labstack.github.io/echox/middleware/gzip</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/hello-world</loc>
+    <loc>https://labstack.github.io/echox/cookbook/hello-world</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/http2</loc>
+    <loc>https://labstack.github.io/echox/cookbook/http2</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/http2-server-push</loc>
+    <loc>https://labstack.github.io/echox/cookbook/http2-server-push</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/installation</loc>
+    <loc>https://labstack.github.io/echox/guide/installation</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/ip-address</loc>
+    <loc>https://labstack.github.io/echox/guide/ip-address</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/jaegertracing</loc>
+    <loc>https://labstack.github.io/echox/middleware/jaegertracing</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/jsonp</loc>
+    <loc>https://labstack.github.io/echox/cookbook/jsonp</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/jwt</loc>
+    <loc>https://labstack.github.io/echox/middleware/jwt</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/jwt</loc>
+    <loc>https://labstack.github.io/echox/cookbook/jwt</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/key-auth</loc>
+    <loc>https://labstack.github.io/echox/middleware/key-auth</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/load-balancing</loc>
+    <loc>https://labstack.github.io/echox/cookbook/load-balancing</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/logger</loc>
+    <loc>https://labstack.github.io/echox/middleware/logger</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/method-override</loc>
+    <loc>https://labstack.github.io/echox/middleware/method-override</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware</loc>
+    <loc>https://labstack.github.io/echox/middleware</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/middleware</loc>
+    <loc>https://labstack.github.io/echox/cookbook/middleware</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware</loc>
+    <loc>https://labstack.github.io/echox/middleware</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/migration</loc>
+    <loc>https://labstack.github.io/echox/guide/migration</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/prometheus</loc>
+    <loc>https://labstack.github.io/echox/middleware/prometheus</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/proxy</loc>
+    <loc>https://labstack.github.io/echox/middleware/proxy</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/rate-limiter</loc>
+    <loc>https://labstack.github.io/echox/middleware/rate-limiter</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/recover</loc>
+    <loc>https://labstack.github.io/echox/middleware/recover</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/redirect</loc>
+    <loc>https://labstack.github.io/echox/middleware/redirect</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/request</loc>
+    <loc>https://labstack.github.io/echox/guide/request</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/request-id</loc>
+    <loc>https://labstack.github.io/echox/middleware/request-id</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/response</loc>
+    <loc>https://labstack.github.io/echox/guide/response</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/reverse-proxy</loc>
+    <loc>https://labstack.github.io/echox/cookbook/reverse-proxy</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/rewrite</loc>
+    <loc>https://labstack.github.io/echox/middleware/rewrite</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/routing</loc>
+    <loc>https://labstack.github.io/echox/guide/routing</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/secure</loc>
+    <loc>https://labstack.github.io/echox/middleware/secure</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/session</loc>
+    <loc>https://labstack.github.io/echox/middleware/session</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/static-files</loc>
+    <loc>https://labstack.github.io/echox/guide/static-files</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/static</loc>
+    <loc>https://labstack.github.io/echox/middleware/static</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/streaming-response</loc>
+    <loc>https://labstack.github.io/echox/cookbook/streaming-response</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/subdomains</loc>
+    <loc>https://labstack.github.io/echox/cookbook/subdomains</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/support-echo</loc>
+    <loc>https://labstack.github.io/echox/support-echo</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/tags</loc>
+    <loc>https://labstack.github.io/echox/tags</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/templates</loc>
+    <loc>https://labstack.github.io/echox/guide/templates</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/guide/testing</loc>
+    <loc>https://labstack.github.io/echox/guide/testing</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/timeout</loc>
+    <loc>https://labstack.github.io/echox/middleware/timeout</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/timeouts</loc>
+    <loc>https://labstack.github.io/echox/cookbook/timeouts</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/middleware/trailing-slash</loc>
+    <loc>https://labstack.github.io/echox/middleware/trailing-slash</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/twitter</loc>
+    <loc>https://labstack.github.io/echox/cookbook/twitter</loc>
   </url>
   
   <url>
-    <loc>https://echo.labstack.com/cookbook/websocket</loc>
+    <loc>https://labstack.github.io/echox/cookbook/websocket</loc>
   </url>
   
 </urlset>
