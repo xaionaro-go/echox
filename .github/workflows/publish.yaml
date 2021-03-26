@@ -21,12 +21,12 @@ jobs:
 
       - name: Build static pages
         run: |
-          export BASE_URL=https://echo.labstack.com/
           cd website
-          hugo -D --baseURL $BASE_URL
+          hugo -D
 
       - name: Publish to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/public
+          cname: echo.labstack.com
