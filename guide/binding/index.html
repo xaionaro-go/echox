@@ -676,7 +676,7 @@ application/x-www-form-urlencoded data based on the Content-Type header.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
   <span style="color:#a6e22e">ID</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`param:&#34;id&#34; query:&#34;id&#34; form:&#34;id&#34; json:&#34;id&#34; xml:&#34;id&#34;`</span>
 }
-</code></pre></div><p>Request data is binded to the struct in given order:</p>
+</code></pre></div><p>Request data is bound to the struct in given order:</p>
 <ol>
 <li>Path parameters</li>
 <li>Query parameters (only for GET/DELETE methods)</li>
@@ -686,11 +686,11 @@ application/x-www-form-urlencoded data based on the Content-Type header.</p>
 <ul>
 <li>For <code>query</code>, <code>param</code>, <code>form</code> <strong>only</strong> fields <strong>with</strong> tags are bound.</li>
 <li>For <code>json</code> and <code>xml</code> can bind to <em>public</em> fields without tags but this is by their standard library implementation.</li>
-<li>Each step can overwrite binded fields from the previous step. This means if your json request has query param
+<li>Each step can overwrite bound fields from the previous step. This means if your json request has query param
 <code>&amp;name=query</code> and body is <code>{&quot;name&quot;: &quot;body&quot;}</code> then the result will be <code>User{Name: &quot;body&quot;}</code>.</li>
-<li>To avoid security flaws try to avoid passing binded structs directly to other methods if
+<li>To avoid security flaws try to avoid passing bound structs directly to other methods if
 these structs contain fields that should not be bindable. It is advisable to have separate struct for binding and map it
-explicitly to your business struct. Consider what will happen if your binded struct has public
+explicitly to your business struct. Consider what will happen if your bound struct has public
 field <code>IsAdmin bool</code> and request body would contain <code>{IsAdmin: true, Name: &quot;hacker&quot;}</code>.</li>
 <li>When binding forms take note that Echo implementation uses standard library form parsing which parses form data
 from BOTH URL and BODY if content type is not MIMEMultipartForm. See documentation for <a href="https://golang.org/pkg/net/http/#Request.ParseForm">non-MIMEMultipartForm</a>
@@ -723,7 +723,7 @@ and <a href="https://golang.org/pkg/net/http/#Request.ParseMultipartForm">MIMEMu
   <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Bind</span>(<span style="color:#a6e22e">u</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
     <span style="color:#66d9ef">return</span>
   }
-  <span style="color:#75715e">// To avoid security flaws try to avoid passing binded structs directly to other methods 
+  <span style="color:#75715e">// To avoid security flaws try to avoid passing bound structs directly to other methods 
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// if these structs contain fields that should not be bindable. 
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">UserDTO</span>{
     <span style="color:#a6e22e">Name</span>: <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>,
