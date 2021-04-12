@@ -683,6 +683,15 @@
   <span style="color:#a6e22e">Skipper</span>: <span style="color:#a6e22e">DefaultSkipper</span>,
   <span style="color:#a6e22e">Level</span>:   <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,
 }
+</code></pre></div><h3 id="middleware-skipper">Middleware Skipper</h3>
+<p>A middleware skipper can be passed to avoid gzip to certain URLs:</p>
+<p><em>Usage</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">e</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">echo</span>.<span style="color:#a6e22e">New</span>()
+<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">Use</span>(<span style="color:#a6e22e">middleware</span>.<span style="color:#a6e22e">GzipWithConfig</span>(<span style="color:#a6e22e">middleware</span>.<span style="color:#a6e22e">GzipConfig</span>{
+  <span style="color:#a6e22e">Skipper</span>: <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#a6e22e">echo</span>.<span style="color:#a6e22e">Context</span>) <span style="color:#66d9ef">bool</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Path</span>(), <span style="color:#e6db74">&#34;metrics&#34;</span>) <span style="color:#75715e">// Change &#34;metrics&#34; for your own path
+</span><span style="color:#75715e"></span>  },
+}))
 </code></pre></div>
             </section>
             <footer>
