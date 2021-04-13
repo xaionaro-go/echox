@@ -674,7 +674,8 @@
 <p><em>Sample Output</em></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">method<span style="color:#f92672">=</span>GET, uri<span style="color:#f92672">=</span>/, status<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>
 </code></pre></div><h2 id="configuration">Configuration</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">LoggerConfig</span> <span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// LoggerConfig defines the config for Logger middleware.
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">LoggerConfig</span> <span style="color:#66d9ef">struct</span> {
   <span style="color:#75715e">// Skipper defines a function to skip middleware.
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Skipper</span> <span style="color:#a6e22e">Skipper</span>
 
@@ -684,12 +685,14 @@
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - time_unix_nano
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - time_rfc3339
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - time_rfc3339_nano
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// - time_custom
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - id (Request ID)
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - remote_ip
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - uri
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - host
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - method
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - path
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// - protocol
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - referer
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - user_agent
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - status
@@ -701,25 +704,27 @@
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - header:&lt;NAME&gt;
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - query:&lt;NAME&gt;
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// - form:&lt;NAME&gt;
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// - cookie:&lt;NAME&gt;
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">//
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// Example &#34;${remote_ip} ${status}&#34;
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">//
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// Optional. Default value DefaultLoggerConfig.Format.
-</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Format</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;format&#34;`</span>
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Format</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`yaml:&#34;format&#34;`</span>
 
-  <span style="color:#75715e">// Output is a writer where logs are written.
+  <span style="color:#75715e">// Optional. Default value DefaultLoggerConfig.CustomTimeFormat.
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">CustomTimeFormat</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`yaml:&#34;custom_time_format&#34;`</span>
+
+  <span style="color:#75715e">// Output is a writer where logs in JSON format are written.
 </span><span style="color:#75715e"></span>  <span style="color:#75715e">// Optional. Default value os.Stdout.
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Output</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">Writer</span>
 }
 </code></pre></div><p><em>Default Configuration</em></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">DefaultLoggerConfig</span> = <span style="color:#a6e22e">LoggerConfig</span>{
   <span style="color:#a6e22e">Skipper</span>: <span style="color:#a6e22e">DefaultSkipper</span>,
-  <span style="color:#a6e22e">Format</span>: <span style="color:#e6db74">`{&#34;time&#34;:&#34;${time_rfc3339_nano}&#34;,&#34;id&#34;:&#34;${id}&#34;,&#34;remote_ip&#34;:&#34;${remote_ip}&#34;,&#34;host&#34;:&#34;${host}&#34;,`</span> <span style="color:#f92672">+</span>
-    <span style="color:#e6db74">`&#34;method&#34;:&#34;${method}&#34;,&#34;uri&#34;:&#34;${uri}&#34;,&#34;status&#34;:${status},&#34;error&#34;:&#34;${error}&#34;,&#34;latency&#34;:${latency},`</span> <span style="color:#f92672">+</span>
-    <span style="color:#e6db74">`&#34;latency_human&#34;:&#34;${latency_human}&#34;,&#34;bytes_in&#34;:${bytes_in},`</span> <span style="color:#f92672">+</span>
-    <span style="color:#e6db74">`&#34;bytes_out&#34;:${bytes_out}}`</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\n&#34;</span>,
-  <span style="color:#a6e22e">Output</span>: <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>
+  <span style="color:#a6e22e">Format</span>: <span style="color:#e6db74">`{&#34;time&#34;:&#34;${time_rfc3339_nano}&#34;,&#34;id&#34;:&#34;${id}&#34;,&#34;remote_ip&#34;:&#34;${remote_ip}&#34;,`</span> <span style="color:#f92672">+</span>
+    <span style="color:#e6db74">`&#34;host&#34;:&#34;${host}&#34;,&#34;method&#34;:&#34;${method}&#34;,&#34;uri&#34;:&#34;${uri}&#34;,&#34;user_agent&#34;:&#34;${user_agent}&#34;,`</span> <span style="color:#f92672">+</span>
+    <span style="color:#e6db74">`&#34;status&#34;:${status},&#34;error&#34;:&#34;${error}&#34;,&#34;latency&#34;:${latency},&#34;latency_human&#34;:&#34;${latency_human}&#34;`</span> <span style="color:#f92672">+</span>
+    <span style="color:#e6db74">`,&#34;bytes_in&#34;:${bytes_in},&#34;bytes_out&#34;:${bytes_out}}`</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\n&#34;</span>,
+  <span style="color:#a6e22e">CustomTimeFormat</span>: <span style="color:#e6db74">&#34;2006-01-02 15:04:05.00000&#34;</span>,
 }
 </code></pre></div>
             </section>
